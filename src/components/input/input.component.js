@@ -18,9 +18,10 @@ export default {
     controller,
     template: `
         <div class="form-group">
-            <label for="{{ ::$id }}" ng-if="::$ctrl.isSlotFilled('label')">
-                <div ng-transclude="label"></div>
-            </label>
+            <span class="form-control-label" for="{{ ::$id }}"
+                ng-if="::$ctrl.isSlotFilled('label')"
+                ng-transclude="label">
+            </span>
 
             <input class="form-control"
                 id="{{ ::$id }}"
@@ -32,8 +33,8 @@ export default {
                 ng-change="$ctrl.ngModel.$commitViewValue()">
 
             <small id="{{ ::$id }}-help" class="form-text text-muted"
-                ng-if="::$ctrl.isSlotFilled('description')">
-                <div ng-transclude="description"></div>
+                ng-if="::$ctrl.isSlotFilled('description')"
+                ng-transclude="description">
             </small>
         </div>
     `,
