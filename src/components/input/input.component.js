@@ -19,7 +19,8 @@ export default {
                 aria-describedby="{{ ::$id }}-help"
                 placeholder="{{ ::$ctrl.placeholder }}"
                 type="{{ ::$ctrl.type }}"
-                ng-model="$ctrl.ngModel.$viewValue">
+                ng-model="$ctrl.ngModel.$viewValue"
+                ng-change="$ctrl.ngModel.$commitViewValue()">
 
             <small id="{{ ::$id }}-help" class="form-text text-muted"
                 ng-if="::$ctrl.isSlotFilled('description')">
@@ -31,7 +32,7 @@ export default {
         placeholder: '@',
         type: '@',
     },
-    requires: {
+    require: {
         ngModel: 'ngModel',
     },
     transclude: {
