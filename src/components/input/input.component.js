@@ -1,6 +1,14 @@
 class controller {
     constructor($transclude) {
         this.isSlotFilled = $transclude.isSlotFilled;
+        this.inputSizeStyle = '';
+    }
+
+    $onInit() {
+        // Set input size (i.e. lg or sm)
+        if (this.size && (this.size === 'sm' || this.size === 'lg')) {
+            this.inputSizeStyle += `form-control-${this.size}`;
+        }
     }
 }
 
@@ -16,9 +24,10 @@ export default {
 
             <input class="form-control"
                 id="{{ ::$id }}"
+                type="{{ ::$ctrl.type }}"
+                ng-class="::$ctrl.inputSizeStyle"
                 aria-describedby="{{ ::$id }}-help"
                 placeholder="{{ ::$ctrl.placeholder }}"
-                type="{{ ::$ctrl.type }}"
                 ng-model="$ctrl.ngModel.$viewValue"
                 ng-change="$ctrl.ngModel.$commitViewValue()">
 
@@ -30,6 +39,7 @@ export default {
     `,
     bindings: {
         placeholder: '@',
+        size: '@',
         type: '@',
     },
     require: {
