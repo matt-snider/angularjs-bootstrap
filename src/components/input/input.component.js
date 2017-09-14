@@ -23,16 +23,22 @@ export default {
                 ng-transclude="label">
             </span>
 
-            <input class="form-control"
-                id="{{ ::$id }}"
-                type="{{ ::$ctrl.type }}"
-                ng-class="::$ctrl.inputSizeStyle"
-                aria-describedby="{{ ::$id }}-help"
-                placeholder="{{ ::$ctrl.placeholder }}"
-                ng-model="$ctrl.ngModel.$viewValue"
-                ng-change="$ctrl.ngModel.$commitViewValue()"
-                ng-readonly="$ctrl.isReadonly"
-                ng-disabled="$ctrl.isDisabled">
+            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                <div class="input-group-addon" ng-if="::$ctrl.addon">
+                    {{ ::$ctrl.addon }}
+                </div>
+
+                <input class="form-control"
+                    id="{{ ::$id }}"
+                    type="{{ ::$ctrl.type }}"
+                    ng-class="::$ctrl.inputSizeStyle"
+                    aria-describedby="{{ ::$id }}-help"
+                    placeholder="{{ ::$ctrl.placeholder }}"
+                    ng-model="$ctrl.ngModel.$viewValue"
+                    ng-change="$ctrl.ngModel.$commitViewValue()"
+                    ng-readonly="$ctrl.isReadonly"
+                    ng-disabled="$ctrl.isDisabled">
+            </div>
 
             <small id="{{ ::$id }}-help" class="form-text text-muted"
                 ng-if="::$ctrl.isSlotFilled('description')"
@@ -44,6 +50,7 @@ export default {
         placeholder: '@',
         size: '@',
         type: '@',
+        addon: '@',
         isReadonly: '<',
         isDisabled: '<',
     },
