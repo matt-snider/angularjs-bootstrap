@@ -5,14 +5,23 @@ class controller {
     }
 
     $onInit() {
-        // Set input size (i.e. lg or sm)
+        // Set input size class (i.e. lg or sm)
         if (this.size && (this.size === 'sm' || this.size === 'lg')) {
-            this.inputSizeStyle += `form-control-${this.size}`;
+            this.inputSizeStyle = `form-control-${this.size}`;
         }
     }
 }
 
 
+/**
+ * TODO:
+ * - ngBlur/ngFocus
+ * - ngCut/ngCopy/ngPaste
+ * - ngDisabled
+ * - ngList
+ * - ngRequired
+ * - ngReadonly
+ */
 export default {
     name: 'bsInput',
     controller,
@@ -34,8 +43,7 @@ export default {
                     ng-class="::$ctrl.inputSizeStyle"
                     aria-describedby="{{ ::$id }}-help"
                     placeholder="{{ ::$ctrl.placeholder }}"
-                    ng-model="$ctrl.ngModel.$viewValue"
-                    ng-change="$ctrl.ngModel.$commitViewValue()"
+                    fwd-ng-model="$ctrl.ngModel"
                     ng-readonly="$ctrl.isReadonly"
                     ng-disabled="$ctrl.isDisabled">
             </div>
