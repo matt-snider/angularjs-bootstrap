@@ -43,7 +43,7 @@ export default {
                     type="{{ ::$ctrl.type }}"
                     aria-describedby="{{ ::$id }}-help"
                     placeholder="{{ ::$ctrl.placeholder }}"
-                    fwd-ng-model="$ctrl.ngModel"
+                    bs-fwd-ng-model="$ctrl.ngModel"
                     ng-class="[$ctrl.inputSizeStyle, {
                                'is-valid': $ctrl.ngModel.$valid,
                                'is-invalid': $ctrl.ngModel.$invalid}]"

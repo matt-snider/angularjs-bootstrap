@@ -1,5 +1,5 @@
 /**
- * fwdNgModel
+ * bsFwdNgModel
  *
  * Useful for passing an NgModelController instance through to
  * a component (e.g. an input). This allows us to use all the usual
@@ -15,14 +15,15 @@
  * - ngRequired
  */
 const data = {
+    restrict: 'A',
     scope: {
-        fwdNgModel: '&',
+        bsFwdNgModel: '&',
     },
     link: {
         pre(scope, element, attrs) {
-            let ngModelCtrl = scope.fwdNgModel();
+            let ngModelCtrl = scope.bsFwdNgModel();
             if (!ngModelCtrl) {
-                let msg = `fwdNgModel: expected ngModel instance, got ${attrs.fwdNgModel}`;
+                let msg = `bsFwdNgModel: expected ngModel instance, got ${attrs.bsFwdNgModel}`;
                 throw Exception(msg);
             }
             element.data('$ngModelController', ngModelCtrl);
@@ -31,7 +32,7 @@ const data = {
 };
 
 export default
-    function fwdNgModel() {
+    function bsFwdNgModel() {
         return data;
     };
 
