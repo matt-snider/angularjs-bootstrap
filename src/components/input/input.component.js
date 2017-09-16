@@ -40,14 +40,15 @@ export default {
                 <input class="form-control"
                     id="{{ ::$id }}"
                     type="{{ ::$ctrl.type }}"
-                    ng-class="::$ctrl.inputSizeStyle"
                     aria-describedby="{{ ::$id }}-help"
                     placeholder="{{ ::$ctrl.placeholder }}"
                     fwd-ng-model="$ctrl.ngModel"
+                    ng-class="[$ctrl.inputSizeStyle, {
+                               'is-valid': $ctrl.ngModel.$valid,
+                               'is-invalid': $ctrl.ngModel.$invalid}]"
                     ng-readonly="$ctrl.isReadonly"
                     ng-disabled="$ctrl.isDisabled">
             </div>
-
             <small id="{{ ::$id }}-help" class="form-text text-muted"
                 ng-if="::$ctrl.isSlotFilled('description')"
                 ng-transclude="description">
