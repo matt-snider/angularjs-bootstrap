@@ -51,8 +51,8 @@ export default {
                     ng-disabled="$ctrl.isDisabled">
 
                 <div class="invalid-feedback"
-                    ng-messages="$ctrl.ngModel.$error"
                     ng-transclude="errors"
+                    bs-error-messages="$ctrl.ngModel.$error"
                     ng-if="::$ctrl.isSlotFilled('errors')">
                 </div>
             </div>
