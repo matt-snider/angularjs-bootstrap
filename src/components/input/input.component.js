@@ -1,3 +1,6 @@
+import './input.component.css';
+
+
 class controller {
     constructor($transclude) {
         this.isSlotFilled = $transclude.isSlotFilled;
@@ -19,7 +22,6 @@ class controller {
  * - ngCut/ngCopy/ngPaste
  * - ngDisabled
  * - ngList
- * - ngRequired
  * - ngReadonly
  */
 export default {
@@ -36,7 +38,6 @@ export default {
                 <div class="input-group-addon" ng-if="::$ctrl.addon">
                     {{ ::$ctrl.addon }}
                 </div>
-
                 <input class="form-control"
                     id="{{ ::$id }}"
                     type="{{ ::$ctrl.type }}"
@@ -48,7 +49,14 @@ export default {
                                'is-invalid': $ctrl.ngModel.$invalid}]"
                     ng-readonly="$ctrl.isReadonly"
                     ng-disabled="$ctrl.isDisabled">
+
+                <div class="invalid-feedback"
+                    ng-messages="$ctrl.ngModel.$error"
+                    ng-transclude="errors"
+                    ng-if="::$ctrl.isSlotFilled('errors')">
+                </div>
             </div>
+
             <small id="{{ ::$id }}-help" class="form-text text-muted"
                 ng-if="::$ctrl.isSlotFilled('description')"
                 ng-transclude="description">
@@ -69,5 +77,6 @@ export default {
     transclude: {
         label: '?label',
         description: '?description',
+        errors: '?errors',
     },
 };
