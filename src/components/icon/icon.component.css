@@ -1,0 +1,8 @@
+/* Dark and light theme */
+.octicon.dark {
+    fill: black;
+}
+
+.octicon.light {
+    fill: white;
+}

@@ -21,7 +21,8 @@
   "homepage": "https://github.com/matt-snider/angularjs-bootstrap",
   "dependencies": {
     "angular": "^1.5.0",
-    "angular-messages": "^1.5.0"
+    "angular-messages": "^1.5.0",
+    "octicons": "^6.0.1"
   },
   "devDependencies": {
     "add": "^2.0.6",
