@@ -3,7 +3,7 @@
  *
  * Transforms a set of transcluded errors into ng-messages.
  * e.g.
- *  <div bs-error-messages>
+ *  <div bs-error-messages="myForm.$errors">
  *      <errors>
  *          <maxlength>Value is too long!</maxlength>
  *      </errors>
@@ -11,7 +11,7 @@
  *
  * Will become
  *  <div bs-error-messages>
- *      <div ng-messages="maxlength">
+ *      <div ng-messages="myForm.$errors">
  *          <div ng-message="maxlength">Value is too long!</div>
  *      </div>
  *  </div>
@@ -25,16 +25,7 @@ import {stripIndent} from 'common-tags';
 function bsErrorMessages($compile) {
     return {
         restrict: 'A',
-        // compile(tElem, tAttrs) {
-        //     console.log(tElem, tAttrs)
-        //     console.log('errors', tElem.find('errors'));
-        //     return () => {};
-        // },
         link(scope, elem, attrs) {
-            // var html ='<div ng-repeat="item in items">I should not be red</div>';
-            // var e = $compile(html)($scope);
-            // $element.replaceWith(e);
-
             // Get the errors and build ng-message nodes
             let root = elem.find('errors');
             let errors = root.children();
@@ -55,7 +46,7 @@ function bsErrorMessages($compile) {
                 <div ng-messages="${errorExpr}">
                     ${ngMessages.join('\n')}
                 </div>`;
-            errors.replaceWith($compile(contents)(scope));
+            root.replaceWith($compile(contents)(scope));
         },
     };
 };
