@@ -20,19 +20,18 @@
   },
   "homepage": "https://github.com/matt-snider/angularjs-bootstrap",
   "dependencies": {
-    "add": "^2.0.6",
     "angular": "^1.5.0",
-    "angular-messages": "^1.5.0",
-    "bootstrap": "4.0.0-beta",
-    "common-tags": "^1.4.0",
-    "yarn": "^1.0.2"
+    "angular-messages": "^1.5.0"
   },
   "devDependencies": {
+    "add": "^2.0.6",
     "angular-mocks": "^1.5.0",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
+    "bootstrap": "4.0.0-beta",
+    "common-tags": "^1.4.0",
     "copy-webpack-plugin": "4.0.1",
     "css-loader": "0.26.1",
     "extract-text-webpack-plugin": "2.0.0-beta.5",
@@ -54,6 +53,7 @@
     "rimraf": "^2.5.1",
     "style-loader": "^0.13.0",
     "webpack": "2.2.0",
-    "webpack-dev-server": "2.2.0"
+    "webpack-dev-server": "2.2.0",
+    "yarn": "^1.0.2"
   }
 }
