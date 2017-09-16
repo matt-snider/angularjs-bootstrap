@@ -30,10 +30,9 @@ const data = {
     },
 };
 
-function directive() {
-    directive.name = 'fwdNgModel';
-    return data;
-}
+export default
+    function fwdNgModel() {
+        return data;
+    };
 
-export default directive;
 
