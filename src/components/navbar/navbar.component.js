@@ -1,6 +1,5 @@
 class controller {
-    constructor($transclude) {
-        this.isSlotFilled = $transclude.isSlotFilled;
+    constructor() {
         this.styles = [];
     }
 
@@ -34,10 +33,7 @@ export default {
     controller,
     template: `
         <nav class="navbar" ng-class="::$ctrl.styles">
-            <a href="#" class="navbar-brand"
-                ng-transclude="brand"
-                ng-if="::$ctrl.isSlotFilled('brand')">
-            </a>
+            <span ng-transclude="brand"></span>
 
             <button class="navbar-toggler" type="button"
                 data-toggle="collapse"
@@ -48,9 +44,8 @@ export default {
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="${NAVBAR_ITEMS_ID}"
-                ng-if="::$ctrl.isSlotFilled('items')"
-                ng-transclude="items" bs-navbar-items>
+            <div ng-transclude="items" id="${NAVBAR_ITEMS_ID}"
+                class="collapse navbar-collapse">
             </div>
         </nav>
     `,

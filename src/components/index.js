@@ -1,17 +1,17 @@
 import angular from 'angular';
 
-import core from '../core';
-import Input from './input/input.component';
-import Navbar from './navbar/navbar.component';
-import Icon from './icon/icon.component';
+import coreModule from '../core';
+import navbarModule from './navbar';
 
-import bsNavbarItems from './navbar/navbar-items.directive';
+import Input from './input/input.component';
+import Icon from './icon/icon.component';
 
 
 export default
-    angular.module('bootstrap.components', [core])
+    angular.module('bootstrap.components', [
+            coreModule,
+            navbarModule,
+        ])
         .component(Input.name, Input)
-        .component(Navbar.name, Navbar)
         .component(Icon.name, Icon)
-        .directive(bsNavbarItems.name, bsNavbarItems)
         .name;
