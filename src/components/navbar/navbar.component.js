@@ -1,5 +1,8 @@
+import {stripIndent} from 'common-tags';
+
+
 const NAVBAR_ITEMS_ID = 'bs-navbar-{{ ::$id }}-items';
-const TOGGLER = `
+const TOGGLER = stripIndent`
     <button ng-click="$ctrl.toggleCollapse()"
             type="button"
             class="navbar-toggler"
@@ -9,8 +12,13 @@ const TOGGLER = `
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    `;
-let BRAND = '<span ng-transclude="brand"></span>';
+`;
+
+let BRAND = stripIndent`
+    <a href="#" class="navbar-brand"
+        bs-transclude-and-replace="brand">
+    </a>
+`;
 
 
 class controller {
