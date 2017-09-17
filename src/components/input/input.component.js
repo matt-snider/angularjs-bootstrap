@@ -2,8 +2,7 @@ import './input.component.css';
 
 
 class controller {
-    constructor($transclude) {
-        this.isSlotFilled = $transclude.isSlotFilled;
+    constructor() {
         this.inputSizeStyle = '';
     }
 
@@ -52,13 +51,11 @@ export default {
 
                 <div class="invalid-feedback"
                     ng-transclude="errors"
-                    bs-error-messages="$ctrl.ngModel.$error"
-                    ng-if="::$ctrl.isSlotFilled('errors')">
+                    ng-messages="$ctrl.ngModel.$error">
                 </div>
             </div>
 
             <small id="{{ ::$id }}-help" class="form-text text-muted"
-                ng-if="::$ctrl.isSlotFilled('description')"
                 ng-transclude="description">
             </small>
         </div>
