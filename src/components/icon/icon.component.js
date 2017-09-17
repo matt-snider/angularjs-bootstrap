@@ -32,7 +32,7 @@ export default {
     name: 'bsIcon',
     template($attrs) {
         if (!octicons.hasOwnProperty($attrs.symbol)) {
-            throw Exception(`bsIcon: no icon with symbol '${this.symbol}'`);
+            throw Error(`bsIcon: no icon with symbol '${this.symbol}'`);
         }
 
         // Properties

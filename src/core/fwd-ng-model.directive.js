@@ -25,7 +25,7 @@ function bsFwdNgModel() {
                 let ngModelCtrl = scope.bsFwdNgModel();
                 if (!ngModelCtrl) {
                     let msg = `bsFwdNgModel: expected ngModel instance, got ${attrs.bsFwdNgModel}`;
-                    throw Exception(msg);
+                    throw Error(msg);
                 }
                 element.data('$ngModelController', ngModelCtrl);
             },
