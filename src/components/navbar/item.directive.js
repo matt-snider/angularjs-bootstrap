@@ -16,6 +16,11 @@ function item($compile) {
             }
             element.addClass('nav-item');
 
+            // Check if this contains a dropdown
+            if (element.find('bs-dropdown').length) {
+                element.addClass('dropdown')
+            }
+
             // Add ng-click so that when we click an item
             // the dropdown closes if it's open
             // element.attr('ng-click', '$')

@@ -11,6 +11,9 @@ class controller {
     $onInit() {
         // Defaults
         this.closeOnMouseleave = this.closeOnMouseleave || true;
+
+        // Indicate whether we are in a bsNavbar
+        this.isInNavbar = !!this.bsNavbar;
     }
 
     toggle() {
@@ -53,14 +56,18 @@ class controller {
 export default {
     name: 'bsDropdown',
     controller,
+    require: {
+        bsNavbar: '^',
+    },
     template: `
         <div class="dropdown">
-            <button id="${BUTTON_ID}" type="button"
-                class="btn btn-secondary dropdown-toggle"
+            <a id="${BUTTON_ID}"
+                class="dropdown-toggle"
+                ng-class="$ctrl.isInNavbar ? 'nav-link' : 'btn btn-secondary'"
                 aria-haspopup="true" aria-expanded="false"
                 ng-click="$ctrl.toggle()"
                 bs-transclude-and-replace="label">
-            </button>
+            </a>
 
             <div class="dropdown-menu"
                 aria-labelledby="${BUTTON_ID}"
