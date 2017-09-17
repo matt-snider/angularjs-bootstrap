@@ -15,6 +15,14 @@ function item($compile) {
                 element.empty().append(link);
             }
             element.addClass('nav-item');
+
+            // Add ng-click so that when we click an item
+            // the dropdown closes if it's open
+            // element.attr('ng-click', '$')
+            element.on('click', () => {
+                bsNavbarCtrl.itemClicked()
+                scope.$apply();
+            });
         }
     };
 }

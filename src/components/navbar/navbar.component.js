@@ -1,6 +1,7 @@
 class controller {
     constructor() {
         this.styles = [];
+        this.collapsed = true;
     }
 
     $onInit() {
@@ -23,6 +24,14 @@ class controller {
             this.styles.push(`bg-${this.bg}`);
         }
     }
+
+    toggleCollapse() {
+        this.collapsed = !this.collapsed;
+    }
+
+    itemClicked() {
+        this.collapsed = true;
+    }
 }
 
 const NAVBAR_ITEMS_ID = 'bs-navbar-{{ ::$id }}-items';
@@ -35,8 +44,9 @@ export default {
         <nav class="navbar" ng-class="::$ctrl.styles">
             <span ng-transclude="brand"></span>
 
-            <button class="navbar-toggler" type="button"
-                data-toggle="collapse"
+            <button ng-click="$ctrl.toggleCollapse()"
+                type="button"
+                class="navbar-toggler"
                 data-target="#${NAVBAR_ITEMS_ID}"
                 aria-controls="${NAVBAR_ITEMS_ID}"
                 aria-expanded="false"
@@ -45,7 +55,8 @@ export default {
             </button>
 
             <div ng-transclude="items" id="${NAVBAR_ITEMS_ID}"
-                class="collapse navbar-collapse">
+                class="navbar-collapse"
+                ng-class="{collapse: $ctrl.collapsed}">
             </div>
         </nav>
     `,
