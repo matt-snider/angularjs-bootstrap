@@ -1,8 +1,11 @@
-/* Dark and light theme */
-.octicon.dark {
-    fill: black;
-}
+/**
+ * Hover styles
+ *
+ * Hovering changes opacity. When hovering over a link containing
+ * an octicon, also change opacity
+ */
 
-.octicon.light {
-    fill: white;
+a.nav-link:hover bs-icon svg,
+bs-icon:hover svg {
+    fill-opacity: 0.8;
 }

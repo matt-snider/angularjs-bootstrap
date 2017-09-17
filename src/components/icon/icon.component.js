@@ -6,6 +6,8 @@
  * Specify the icon with the 'symbol' property:
  *   <bs-icon symbol="mark-github"></bs-icon>
  *
+ *
+ *
  * Additionally supports the following properties:
  * - size (for equal width and height)
  * - width, height separately
@@ -14,6 +16,7 @@
  *
  * Setting class="light" will invert the color
  */
+import angular from 'angular';
 import octicons from 'octicons';
 
 import './icon.component.css';
@@ -21,8 +24,8 @@ import './icon.component.css';
 const PROPS = [
     'width',
     'height',
-    'aria-label',
     'class',
+    'aria-label',
 ];
 
 export default {
