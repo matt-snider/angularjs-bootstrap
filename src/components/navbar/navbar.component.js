@@ -1,3 +1,18 @@
+const NAVBAR_ITEMS_ID = 'bs-navbar-{{ ::$id }}-items';
+const TOGGLER = `
+    <button ng-click="$ctrl.toggleCollapse()"
+            type="button"
+            class="navbar-toggler"
+            data-target="#${NAVBAR_ITEMS_ID}"
+            aria-controls="${NAVBAR_ITEMS_ID}"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    `;
+let BRAND = '<span ng-transclude="brand"></span>';
+
+
 class controller {
     constructor() {
         this.styles = [];
@@ -34,36 +49,34 @@ class controller {
     }
 }
 
-const NAVBAR_ITEMS_ID = 'bs-navbar-{{ ::$id }}-items';
-
-
 export default {
     name: 'bsNavbar',
     controller,
-    template: `
-        <nav class="navbar" ng-class="::$ctrl.styles">
-            <span ng-transclude="brand"></span>
+    template($element, $attrs) {
+        let togglerAndBrand;
+        if (!$attrs.togglerPosition || $attrs.togglerPosition === 'right') {
+            togglerAndBrand = BRAND + TOGGLER;
+        } else if ($attrs.togglerPosition === 'left') {
+            togglerAndBrand = TOGGLER + BRAND;
+        } else {
+            throw Error(`bsNavbar: invalid togglerPosition '${$attrs.togglerPosition}'`);
+        }
 
-            <button ng-click="$ctrl.toggleCollapse()"
-                type="button"
-                class="navbar-toggler"
-                data-target="#${NAVBAR_ITEMS_ID}"
-                aria-controls="${NAVBAR_ITEMS_ID}"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div ng-transclude="items" id="${NAVBAR_ITEMS_ID}"
-                class="navbar-collapse"
-                ng-class="{collapse: $ctrl.collapsed}">
-            </div>
-        </nav>
-    `,
+        return `
+            <nav class="navbar" ng-class="::$ctrl.styles">
+                ${togglerAndBrand}
+                <div ng-transclude="items" id="${NAVBAR_ITEMS_ID}"
+                    class="navbar-collapse"
+                    ng-class="{collapse: $ctrl.collapsed}">
+                </div>
+            </nav>
+        `;
+    },
     bindings: {
         expand: '@',
         theme: '@',
         bg: '@',
+        togglerPosition: '@',
     },
     transclude: {
         brand: '?brand',
