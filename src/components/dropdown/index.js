@@ -1,12 +1,21 @@
 import angular from 'angular';
+import {createReplaceDirective} from '../../core/utils';
 
 import core from '../../core';
 import Dropdown from './dropdown.component';
 
-import dropdownItem from './dropdown-item.directive';
+// Generated
+let DropdownItem = createReplaceDirective(
+    "bsDropdownItem",
+    '<a href="#" class="dropdown-item"></a>',
+    true,
+);
+let DropdownItems = createReplaceDirective("bsDropdownItems");
+
 
 export default
     angular.module('bootstrap.dropdown', [core])
         .component(Dropdown.name, Dropdown)
-        .directive(dropdownItem.name, dropdownItem)
+        .directive(DropdownItem.name, DropdownItem)
+        .directive(DropdownItems.name, DropdownItems)
         .name;

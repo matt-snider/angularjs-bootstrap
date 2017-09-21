@@ -1,22 +1,20 @@
-function dropdownItem($compile) {
+import angular from 'angular';
+
+
+function bsDropdownItem($compile) {
     return {
         restrict: 'E',
-        require: '^?bsDropdown',
-        link(scope, element, attr, bsDropdown) {
-            if (!bsDropdown) return;
-
-            if (attr.href && !element.find('a').length) {
-                element.attr('href', null);
-                let link = $compile(`
-                    <a href="${attr.href}" class="dropdown-item">
-                        ${element.html()}
-                    </a>
-                `)(scope);
-                element.empty().append(link);
-            }
-            element.addClass('dropdown-item');
+        replace: true,
+        template(tElement, tAttr) {
+            let elem = angular.element(
+                '<a href="#" class="dropdown-item"></a>'
+            );
+            elem.append(tElement.html());
+            elem.attr(tAttr.$attrs);
+            console.log('bsdropdownitme', elem[0].outerHTML);
+            return elem[0].outerHTML;
         },
-    };
+    }
 }
 
-export default dropdownItem;
+export default bsDropdownItem;

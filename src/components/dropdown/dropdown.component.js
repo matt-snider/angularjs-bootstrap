@@ -50,14 +50,11 @@ class controller {
     }
 }
 
-// TODO: why can't we use bsTranscludeAndReplace for items?
-// doing this causes the dropdownItem directive to not receive
-// the bsNavbar controller
 export default {
     name: 'bsDropdown',
     controller,
     require: {
-        bsNavbar: '^',
+        bsNavbar: '^?',
     },
     template: `
         <div class="dropdown">
@@ -66,7 +63,7 @@ export default {
                 ng-class="$ctrl.isInNavbar ? 'nav-link' : 'btn btn-secondary'"
                 aria-haspopup="true" aria-expanded="false"
                 ng-click="$ctrl.toggle()"
-                bs-transclude-and-replace="label">
+                ng-transclude="label">
             </a>
 
             <div class="dropdown-menu"
@@ -74,7 +71,7 @@ export default {
                 ng-class="{show: $ctrl.isOpen}"
                 ng-mouseleave="$ctrl.mouseleave()"
                 ng-mouseenter="$ctrl.mouseenter()"
-                ng-transclude="dropdownItems">
+                ng-transclude="items">
             </div>
         </div>
     `,
@@ -82,7 +79,7 @@ export default {
         closeOnMouseleave: '<',
     },
     transclude: {
-        label: '?label',
-        dropdownItems: '?dropdownItems',
+        label: '?bsLabel',
+        items: '?bsDropdownItems',
     }
 }
