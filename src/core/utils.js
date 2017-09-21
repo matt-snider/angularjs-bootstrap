@@ -26,11 +26,13 @@ import angular from 'angular';
  */
 export function createReplaceDirective(name, wrapWith, copyAttributes = false) {
 
-    function template(tElement, tAttr) {
+    function template(tElement, tAttrs) {
         let elem = angular.element(wrapWith);
         elem.append(tElement.html());
         if (copyAttributes) {
-            elem.attr(tAttr.$attrs);
+            for (let prop of Object.keys(tAttrs.$attr)) {
+                elem.attr(prop, tAttrs[prop]);
+            }
         }
         return elem[0].outerHTML;
     }
