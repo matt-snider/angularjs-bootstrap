@@ -1,0 +1,35 @@
+<div class="column">
+    <bs-navbar theme="dark">
+        <bs-brand> angularjs-bootstrap </bs-brand>
+
+        <!-- Items to left -->
+        <bs-navbar-items>
+            <bs-navbar-item>
+                <bs-dropdown>
+                    <bs-label>Components</bs-label>
+                    <bs-dropdown-items>
+                        <bs-dropdown-item href="#!/dropdown" foo="bar">Dropdown</bs-dropdown-item>
+                        <bs-dropdown-item href="#!/icon">Icon</bs-dropdown-item>
+                        <bs-dropdown-item href="#!/input">Input</bs-dropdown-item>
+                        <bs-dropdown-item href="#!/navbar">Navbar</bs-dropdown-item>
+                    </bs-dropdown-items>
+                </bs-dropdown>
+            </bs-navbar-item>
+        </bs-navbar-items>
+
+
+        <!-- Items to right -->
+        <bs-navbar-items>
+            <bs-navbar-item>
+                <a class="nav-link" href="https://github.com/matt-snider/angularjs-bootstrap">
+                    View on GitHub
+                    <bs-icon symbol="mark-github" size="18">
+                    </bs-icon>
+                </a>
+            </bs-navbar-item>
+        </bs-navbar-items>
+    </bs-navbar>
+</div>
+<div class="column m-4">
+    <ng-view></ng-view>
+</div>
