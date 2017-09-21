@@ -2,7 +2,7 @@ import angular from 'angular';
 import {stripIndent} from 'common-tags';
 
 
-function errors($compile) {
+function bsErrors($compile) {
     return {
         restrict: 'E',
         require: '^?bsInput',
@@ -35,4 +35,4 @@ function errors($compile) {
     }
 }
 
-export default errors;
+export default bsErrors;

@@ -1,4 +1,4 @@
-function item($compile) {
+function bsNavbarItem($compile) {
     return {
         name: 'item',
         require: '^?bsNavbar',
@@ -32,4 +32,4 @@ function item($compile) {
     };
 }
 
-export default item;
+export default bsNavbarItem;

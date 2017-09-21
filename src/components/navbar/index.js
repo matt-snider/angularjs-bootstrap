@@ -1,13 +1,14 @@
 import angular from 'angular';
+import {createReplaceDirective} from '../../core/utils';
 
 import Navbar from './navbar.component';
-import Items from './items.directive';
-import Item from './item.directive';
+import NavbarItems from './navbar-items.directive';
+import NavbarItem from './navbar-item.directive';
 
 
 // Generated
-let NavbarBrand = createReplaceDirective(
-    'bsNavbarBrand',
+let Brand = createReplaceDirective(
+    'bsBrand',
     '<a href="#" class="navbar-brand"></a>',
     true,
 )
@@ -15,7 +16,7 @@ let NavbarBrand = createReplaceDirective(
 export default
     angular.module('bootstrap.navbar', [])
         .component(Navbar.name, Navbar)
-        .directive(NavbarBrand.name, NavbarBrand)
-        .directive(Items.name, Items)
-        .directive(Item.name, Item)
+        .directive(Brand.name, Brand)
+        .directive(NavbarItems.name, NavbarItems)
+        .directive(NavbarItem.name, NavbarItem)
         .name;

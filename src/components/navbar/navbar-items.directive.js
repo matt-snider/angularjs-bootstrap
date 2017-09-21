@@ -6,7 +6,7 @@ let CLASSES = {
 }
 
 
-function items($compile) {
+function bsNavbarItems($compile) {
     return {
         restrict: 'E',
         require: '^?bsNavbar',
@@ -38,4 +38,4 @@ function items($compile) {
     }
 }
 
-export default items;
+export default bsNavbarItems;
