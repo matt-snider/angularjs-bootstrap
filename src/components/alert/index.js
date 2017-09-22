@@ -1,9 +1,8 @@
 import angular from 'angular';
 
-import {createDirectiveFn, createReplaceDirective} from '../../core/utils';
-
 import core from '../../core';
-import {default as Alert, AlertController, TYPES} from './alert.component';
+import {TYPES} from '../../core/contextual-types.service';
+import {default as Alert, AlertController} from './alert.component';
 
 let alertModule =
     angular.module('bootstrap.alert', [core])
@@ -15,8 +14,8 @@ let alertModule =
 // End up with <bs-alert-success>, <bs-alert-warning>, ... etc
 function makeAlert(type) {
     class SingleTypeAlert extends AlertController {
-        constructor($element) {
-            super($element);
+        constructor($element, bsContextualTypes) {
+            super($element, bsContextualTypes);
             this.alertTypeStyle = `alert-${type}`;
         }
         $onChanges() { }

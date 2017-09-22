@@ -1,21 +1,9 @@
-export const
-    TYPES = new Set([
-        'primary',
-        'secondary',
-        'success',
-        'danger',
-        'warning',
-        'info',
-        'light',
-        'dark',
-    ]);
-
 const DEFAULT_TYPE = 'primary';
 
-
 export class AlertController {
-    constructor($element) {
+    constructor($element, bsContextualTypes) {
         this.$element = $element;
+        this.bsContextualTypes = bsContextualTypes;
     }
 
     $onInit() {
@@ -24,12 +12,7 @@ export class AlertController {
     }
 
     $onChanges(changes) {
-        if (!TYPES.has(this.type)) {
-            throw Error(
-                `bsAlert: invalid type provided '${this.type}'. `
-                `Valid types are: ${TYPES}`
-            );
-        }
+        this.bsContextualTypes.validateOrThrow(this.type, 'bsAlert');
         this.alertTypeStyle = `alert-${this.type}`;
     }
 
