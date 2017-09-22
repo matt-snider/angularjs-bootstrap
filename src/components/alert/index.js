@@ -13,16 +13,17 @@ let alertModule =
 // Override alert with new name and update controller.
 // End up with <bs-alert-success>, <bs-alert-warning>, ... etc
 function makeAlert(type) {
-    class SingleTypeAlert extends AlertController {
+    class controller extends AlertController {
         constructor($element, bsContextualTypes) {
             super($element, bsContextualTypes);
-            this.alertTypeStyle = `alert-${type}`;
         }
-        $onChanges() { }
     }
+    controller.prototype.type = type;
 
     let name = `bsAlert${type.charAt(0).toUpperCase() + type.slice(1)}`;
-    let component = Object.assign({}, Alert, { name }, { controller: SingleTypeAlert});
+    let bindings = Object.assign({}, Alert.bindings);
+    let component = Object.assign({}, Alert, { name, bindings, controller });
+    delete bindings.type;
     return component;
 }
 
