@@ -1,3 +1,5 @@
+import {oneLine} from 'common-tags';
+
 export const TYPES = [
     'primary',
     'secondary',
@@ -26,9 +28,9 @@ class bsContextualTypes {
             return;
         }
         sourceComponent = sourceComponent || 'bsAngular';
-        throw Error(
-            `${sourceComponent}: invalid type provided '${value}'. `
-            `Valid types are: ${TYPES}`
+        throw Error(oneLine
+            `${sourceComponent}: invalid type provided '${value}'.
+             Valid types are: ${TYPES}`
         );
     }
 }
