@@ -10,6 +10,9 @@ export const
         'dark',
     ]);
 
+const DEFAULT_TYPE = 'primary';
+
+
 export class AlertController {
     constructor($element) {
         this.$element = $element;
@@ -17,6 +20,7 @@ export class AlertController {
 
     $onInit() {
         this.dismissible = this.dismissible || false
+        this.type = this.type || DEFAULT_TYPE;
     }
 
     $onChanges(changes) {
