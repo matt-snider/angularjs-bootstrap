@@ -3,6 +3,7 @@ import angular from 'angular';
 import coreModule from '../core';
 
 import alertModule from './alert';
+import badgeModule from './badge';
 import dropdownModule from './dropdown';
 import iconModule from './icon';
 import inputModule from './input';
@@ -15,6 +16,7 @@ export default
 
             // Component modules
             alertModule,
+            badgeModule,
             dropdownModule,
             iconModule,
             inputModule,
