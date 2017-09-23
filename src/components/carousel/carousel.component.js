@@ -1,5 +1,7 @@
 import angular from 'angular';
 
+import './carousel.component.css';
+
 const DEFAULT_INTERVAL = 5000;
 
 /**
@@ -7,52 +9,69 @@ const DEFAULT_INTERVAL = 5000;
  * and then calling register() with a jQlite object.
  */
 class controller {
-    constructor($interval) {
+    constructor($animate, $element, $interval) {
+        this.$animate = $animate;
+        this.$element = $element;
         this.$interval = $interval;
-        this.items = [];
+        this.slides = [];
+        this.activeIndex = 0;
+
+        // Slide container should be the second div
+        this.slideContainer = $element.find('div')[1];
     }
 
     $onInit() {
         this.interval = this.interval || DEFAULT_INTERVAL;
-        console.log('init carousel, length: ', this.items.length)
     }
 
     $destroy() {
+        this.stop();
+    }
+
+    register(carouselItem) {
+        if (!angular.isElement(carouselItem)) {
+            throw Error(`bsCarousel: register should be called with jQlite objects, not ${carouselItem}`);
+        }
+        this.slides.push(carouselItem);
+
+        // If this is the first registration, start slide task
+        // Otherwise, simply remove it from the DOM.
+        if (this.slides.length === 1) {
+            this.start();
+        } else {
+            carouselItem.detach();
+        }
+    }
+
+    start() {
+        if (this.__interval) {
+            return;
+        }
+        this.__interval = this.$interval(() => this.next(), this.interval);
+    }
+
+    stop() {
         if (this.__interval) {
             this.$interval.cancel(this.__interval);
         }
     }
 
-    begin() {
-        this.rotate();
-        this.__interval = this.$interval(
-            () => this.rotate(),
-            this.interval,
-        );
+    next() {
+        this.select((this.activeIndex + 1) % this.slides.length);
     }
 
-    register(carouselItem) {
-        console.log('register', carouselItem);
-        if (!angular.isElement(carouselItem)) {
-            throw Error(`bsCarousel: register should be called with jQlite objects, not ${carouselItem}`);
-        }
-        this.items.push(carouselItem);
-
-        if (!this.__interval) {
-            this.begin();
-        }
+    prev() {
+        this.select((this.activeIndex - 1) % this.slides.length);
     }
 
-    rotate() {
-        let next = this.items.shift();
-        let prev = this.items[this.items.length - 1];
-        console.log('rotating', prev, next)
+    select(index) {
+        let prev = this.slides[this.activeIndex];
+        let next = this.slides[index];
 
-        next.addClass('active');
-        if (prev) {
-            prev.removeClass('active');
-        }
-        this.items.push(next)
+        // Run animations and then update index
+        this.$animate.leave(prev);
+        this.$animate.enter(next, this.slideContainer);
+        this.activeIndex = index;
     }
 }
 

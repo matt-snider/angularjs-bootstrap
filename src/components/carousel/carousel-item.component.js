@@ -1,12 +1,13 @@
 function bsCarouselItem() {
     return {
+        restrict: 'E',
         require: '^bsCarousel',
-        template: `<div class="carousel-item" ng-transclude></div>`,
+        replace: true,
+        transclude: true,
+        template: '<div class="carousel-item active" ng-transclude></div>',
         link(scope, element, attrs, bsCarousel) {
             bsCarousel.register(element);
         },
-        transclude: true,
-        replace: true,
     };
 }
 
