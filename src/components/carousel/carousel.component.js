@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import './carousel.component.css';
 
+// Default time to wait between slides
 const DEFAULT_INTERVAL = 5000;
 
 /**
@@ -9,19 +10,21 @@ const DEFAULT_INTERVAL = 5000;
  * and then calling register() with a jQlite object.
  */
 class controller {
-    constructor($animate, $element, $interval, $timeout, $scope) {
+    constructor($animate, $element, $interval, $q) {
         this.$animate = $animate;
         this.$element = $element;
         this.$interval = $interval;
-        this.$timeout = $timeout;
-        this.$scope = $scope;
-        this.running = false;
-        this.reverse = false;
+        this.$q = $q;
         this.slides = [];
         this.activeIndex = 0;
 
+        // State
+        this.animating = false;
+        this.running = false;
+        this.reverse = false;
+
         // Slide container should be the second div
-        this.slideContainer = $element.find('div')[1];
+        this.slideContainer = $element.find('div').eq(1);
     }
 
     $onInit() {
@@ -70,7 +73,7 @@ class controller {
 
     next(isCycle = false) {
         let nextIndex = (this.activeIndex + 1) % this.slides.length;
-        this.select(nextIndex, isCycle);
+        this._select(nextIndex, isCycle);
     }
 
     prev() {
@@ -78,34 +81,39 @@ class controller {
             this.activeIndex !== 0
                 ? this.activeIndex - 1
                 : this.slides.length - 1;
-
-        // prev() is never part of the normal cycle
-        this.select(prevIndex, false);
+        this._select(prevIndex, false, true);
     }
 
-    select(index, isCycle = false) {
+    goToIndex(index) {
+        let isReverse = (index < this.activeIndex);
+        this._select(index, false, isReverse);
+    }
+
+    _select(index, isCycle = true, isReverse = false) {
+        if (this.animating) {
+            return;
+        }
+
         // If this isn't part of the periodic cycle task, reset()
         if(!isCycle) {
             this.reset();
         }
 
-        // Run animations and then update index
-        // If we are going in reverse, set reverse and undo afterwards
+        // Update state and run animations.
         let prev = this.slides[this.activeIndex];
         let next = this.slides[index];
-        this.reverse = this._isReverse(index, this.activeIndex);
-        this.$animate.leave(prev);
-        this.$animate
-            .enter(next, this.slideContainer)
-            .then(() => this.reverse = false);
+        this.animating = true;
         this.activeIndex = index;
-    }
-
-    _isReverse(newIndex, oldIndex) {
-        let lastIndex = this.slides.length - 1;
-        let wrappingFwd = (newIndex === 0 && oldIndex === lastIndex);
-        let wrappingBwd = (newIndex === lastIndex && oldIndex === 0);
-        return (newIndex < oldIndex && !wrappingFwd) || wrappingBwd;
+        this.reverse = isReverse;
+        this.$q
+            .all([
+                this.$animate.leave(prev),
+                this.$animate.enter(next, this.slideContainer),
+            ])
+            .finally(() => {
+                this.animating = false;
+                this.reverse = false;
+            });
     }
 }
 
@@ -115,15 +123,19 @@ export default {
     controller,
     template: `
         <div class="carousel slide">
+            <!-- Indicators -->
             <ol class="carousel-indicators" ng-if="$ctrl.indicators">
                 <li ng-repeat="slide in $ctrl.slides track by $index"
                     ng-class="{active: $index === $ctrl.activeIndex}"
-                    ng-click="$ctrl.select($index)">
+                    ng-click="$ctrl.goToIndex($index)">
                 </li>
             </ol>
+
+            <!-- Slides -->
             <div class="carousel-inner" ng-class="$ctrl.reverse ? 'reverse' : 'forwards'" ng-transclude>
             </div>
 
+            <!-- Controls -->
             <a class="carousel-control-prev" role="button" ng-click="$ctrl.prev()"
                 ng-if="$ctrl.controls">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
