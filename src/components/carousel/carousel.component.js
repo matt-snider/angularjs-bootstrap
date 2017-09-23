@@ -9,10 +9,14 @@ const DEFAULT_INTERVAL = 5000;
  * and then calling register() with a jQlite object.
  */
 class controller {
-    constructor($animate, $element, $interval) {
+    constructor($animate, $element, $interval, $timeout, $scope) {
         this.$animate = $animate;
         this.$element = $element;
         this.$interval = $interval;
+        this.$timeout = $timeout;
+        this.$scope = $scope;
+        this.running = false;
+        this.reverse = false;
         this.slides = [];
         this.activeIndex = 0;
 
@@ -44,34 +48,64 @@ class controller {
     }
 
     start() {
-        if (this.__interval) {
+        if (this.running) {
             return;
         }
-        this.__interval = this.$interval(() => this.next(), this.interval);
+        this.running = true;
+        this.__interval = this.$interval(() => this.next(true), this.interval);
     }
 
     stop() {
-        if (this.__interval) {
-            this.$interval.cancel(this.__interval);
+        if (!this.running) {
+            return;
         }
+        this.$interval.cancel(this.__interval);
+        this.running = false;
     }
 
-    next() {
-        this.select((this.activeIndex + 1) % this.slides.length);
+    reset() {
+        this.stop();
+        this.start();
+    }
+
+    next(isCycle = false) {
+        let nextIndex = (this.activeIndex + 1) % this.slides.length;
+        this.select(nextIndex, isCycle);
     }
 
     prev() {
-        this.select((this.activeIndex - 1) % this.slides.length);
+        let prevIndex =
+            this.activeIndex !== 0
+                ? this.activeIndex - 1
+                : this.slides.length - 1;
+
+        // prev() is never part of the normal cycle
+        this.select(prevIndex, false);
     }
 
-    select(index) {
-        let prev = this.slides[this.activeIndex];
-        let next = this.slides[index];
+    select(index, isCycle = false) {
+        // If this isn't part of the periodic cycle task, reset()
+        if(!isCycle) {
+            this.reset();
+        }
 
         // Run animations and then update index
+        // If we are going in reverse, set reverse and undo afterwards
+        let prev = this.slides[this.activeIndex];
+        let next = this.slides[index];
+        this.reverse = this._isReverse(index, this.activeIndex);
         this.$animate.leave(prev);
-        this.$animate.enter(next, this.slideContainer);
+        this.$animate
+            .enter(next, this.slideContainer)
+            .then(() => this.reverse = false);
         this.activeIndex = index;
+    }
+
+    _isReverse(newIndex, oldIndex) {
+        let lastIndex = this.slides.length - 1;
+        let wrappingFwd = (newIndex === 0 && oldIndex === lastIndex);
+        let wrappingBwd = (newIndex === lastIndex && oldIndex === 0);
+        return (newIndex < oldIndex && !wrappingFwd) || wrappingBwd;
     }
 }
 
@@ -81,12 +115,31 @@ export default {
     controller,
     template: `
         <div class="carousel slide">
-            <div class="carousel-inner" ng-transclude>
+            <ol class="carousel-indicators" ng-if="$ctrl.indicators">
+                <li ng-repeat="slide in $ctrl.slides track by $index"
+                    ng-class="{active: $index === $ctrl.activeIndex}"
+                    ng-click="$ctrl.select($index)">
+                </li>
+            </ol>
+            <div class="carousel-inner" ng-class="$ctrl.reverse ? 'reverse' : 'forwards'" ng-transclude>
             </div>
+
+            <a class="carousel-control-prev" role="button" ng-click="$ctrl.prev()"
+                ng-if="$ctrl.controls">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" role="button" ng-click="$ctrl.next()"
+                ng-if="$ctrl.controls">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     `,
     bindings: {
         interval: '<',
+        controls: '<',
+        indicators: '<',
     },
     transclude: true,
 };

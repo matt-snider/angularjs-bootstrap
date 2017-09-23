@@ -3,19 +3,37 @@
     position: absolute;
     top: 0;
     bottom:0;
+}
 
+.forwards .carousel-item.ng-enter {
     transform: translateX(-100%);
 }
 
-.carousel-item.ng-enter.ng-enter-active {
+.forwards .carousel-item.ng-enter.ng-enter-active {
+    transform: translateX(0);
+}
+
+.reverse .carousel-item.ng-enter {
+    transform: translateX(100%);
+}
+
+.reverse .carousel-item.ng-enter.ng-enter-active {
     transform: translateX(0);
 }
 
 /* On hide */
-.carousel-item.ng-leave {
+.forwards .carousel-item.ng-leave {
     transform: translateX(0);
 }
 
-.carousel-item.ng-leave.ng-leave-active {
+.forwards .carousel-item.ng-leave.ng-leave-active {
     transform: translateX(100%);
+}
+
+.reverse .carousel-item.ng-leave {
+    transform: translateX(0);
+}
+
+.reverse .carousel-item.ng-leave.ng-leave-active {
+    transform: translateX(-100%);
 }
