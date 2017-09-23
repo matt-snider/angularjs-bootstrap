@@ -5,35 +5,35 @@
     bottom:0;
 }
 
-.forwards .carousel-item.ng-enter {
-    transform: translateX(-100%);
-}
-
-.forwards .carousel-item.ng-enter.ng-enter-active {
-    transform: translateX(0);
-}
-
 .reverse .carousel-item.ng-enter {
-    transform: translateX(100%);
+    transform: translateX(-100%);
 }
 
 .reverse .carousel-item.ng-enter.ng-enter-active {
     transform: translateX(0);
 }
 
-/* On hide */
-.forwards .carousel-item.ng-leave {
-    transform: translateX(0);
-}
-
-.forwards .carousel-item.ng-leave.ng-leave-active {
+.forwards .carousel-item.ng-enter {
     transform: translateX(100%);
 }
 
+.forwards .carousel-item.ng-enter.ng-enter-active {
+    transform: translateX(0);
+}
+
+/* On hide */
 .reverse .carousel-item.ng-leave {
     transform: translateX(0);
 }
 
 .reverse .carousel-item.ng-leave.ng-leave-active {
+    transform: translateX(100%);
+}
+
+.forwards .carousel-item.ng-leave {
+    transform: translateX(0);
+}
+
+.forwards .carousel-item.ng-leave.ng-leave-active {
     transform: translateX(-100%);
 }
