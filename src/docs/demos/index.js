@@ -5,6 +5,7 @@ import components from '../../components';
 import DropdownDemo from './dropdown-demo.component';
 import IconDemo from './icon-demo.component';
 import InputDemo from './input-demo.component';
+import GettingStarted from './getting-started.component';
 import NavbarDemo from './navbar-demo.component';
 
 
@@ -13,5 +14,6 @@ export default
         .component(DropdownDemo.name, DropdownDemo)
         .component(IconDemo.name, IconDemo)
         .component(InputDemo.name, InputDemo)
+        .component(GettingStarted.name, GettingStarted)
         .component(NavbarDemo.name, NavbarDemo)
         .name;

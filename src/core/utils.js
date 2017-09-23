@@ -58,15 +58,19 @@ export function createReplaceDirective(name, wrapWith, copyAttributes = false) {
 
     // Merge the implementation and additional props to
     // get our directive configuration.
-    // Name the function so that we can use it with our
-    // standard .directive(fn.name, fn) pattern
     let directive =
         Object.assign({
             restrict: 'E',
             replace: true,
         }, implementation);
-    let directiveFn = () => directive;
-    Object.defineProperty(directiveFn, "name", {value: name});
+    return createDirectiveFn(name, directive);
+}
 
+
+// Name the function so that we can use it with our
+// standard .directive(fn.name, fn) pattern
+export function createDirectiveFn(name, config) {
+    let directiveFn = () => config;
+    Object.defineProperty(directiveFn, "name", {value: name});
     return directiveFn;
 }

@@ -4,6 +4,7 @@ import coreModule from '../core';
 
 import alertModule from './alert';
 import badgeModule from './badge';
+import carouselModule from './carousel';
 import dropdownModule from './dropdown';
 import iconModule from './icon';
 import inputModule from './input';
@@ -17,6 +18,7 @@ export default
             // Component modules
             alertModule,
             badgeModule,
+            carouselModule,
             dropdownModule,
             iconModule,
             inputModule,
