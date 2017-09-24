@@ -2,11 +2,12 @@ let dialogs = new WeakMap();
 
 
 class bsModalService {
-    constructor($compile, $document, $rootScope, $q) {
+    constructor($compile, $document, $rootScope, $q, bsBackdrop) {
         this.$compile = $compile;
         this.$document = $document;
         this.$rootScope = $rootScope;
         this.$q = $q;
+        this.bsBackdrop = bsBackdrop;
     }
 
     alert(title, body) {
@@ -50,6 +51,9 @@ class bsModalService {
         body.addClass('modal-open');
         elem.attr('aria-hidden', false);
         elem.addClass('show d-block');
+
+        // Show the backdrop
+        this.bsBackdrop.show();
         return deferred.promise;
     }
 
@@ -81,6 +85,7 @@ class bsModalService {
     _remove(ctx) {
         ctx.elem.remove();
         ctx.scope.$destroy();
+        this.bsBackdrop.hide();
     }
 }
 
