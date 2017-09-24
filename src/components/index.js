@@ -8,6 +8,7 @@ import carouselModule from './carousel';
 import dropdownModule from './dropdown';
 import iconModule from './icon';
 import inputModule from './input';
+import modalModule from './modal';
 import navbarModule from './navbar';
 
 
@@ -22,6 +23,7 @@ export default
             dropdownModule,
             iconModule,
             inputModule,
+            modalModule,
             navbarModule,
         ])
         .name;
