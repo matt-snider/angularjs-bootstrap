@@ -21,8 +21,10 @@ class bsModalService {
             .body(body);
     }
 
-    prompt(title, message) {
-
+    prompt(title, body) {
+        return new PromptBuilder(this)
+            .title(title)
+            .body(body);
     }
 
     show(builder) {
@@ -31,8 +33,9 @@ class bsModalService {
         let scope = this.$rootScope.$new(true);
         let elem = this.$compile(builder._build())(scope);
         let deferred = this.$q.defer();
-        scope.okFn = () => this.hide(deferred.promise, true);
+        scope.okFn = () => this.hide(deferred.promise);
         scope.cancelFn = () => this.cancel(deferred.promise);
+        scope.vars = {value: builder._promptValue};
 
         // Save a reference to our context via promise
         dialogs.set(deferred.promise, {scope, elem, deferred});
@@ -51,13 +54,18 @@ class bsModalService {
     }
 
     // Close a dialog and resolve with given response
-    hide(promise, response) {
+    hide(promise, response = null) {
         if (!dialogs.has(promise)) {
             throw new UnknownPromise();
         }
+
+        // Try to get value from prompt or default to false
         let ctx = dialogs.get(promise);
-        this._remove(ctx);
+        if (response === null) {
+            response = ctx.scope.vars.value || true;
+        }
         ctx.deferred.resolve(response);
+        this._remove(ctx);
     }
 
     // Close a dialog and reject
@@ -85,11 +93,13 @@ class UnknownPromise extends Error {
 class Builder {
     constructor(service) {
         this.service = service;
-        this._title;
-        this._body;
+        this._title = '';
+        this._body = '';
         this._ok = 'Ok';
         this._cancel = 'Cancel';
         this._dismissible = false;
+        this._isPrompt = false;
+        this._promptValue = '';
     }
 
     title(value) {
@@ -99,6 +109,22 @@ class Builder {
 
     body(value) {
         this._body = value;
+        return this;
+    }
+
+    dismissible(value) {
+        this._dismissible = value;
+        return this;
+    }
+
+    prompt(value) {
+        this._isPrompt = value;
+        return this;
+    }
+
+    promptValue(value) {
+        this.prompt(true);
+        this._promptValue = value;
         return this;
     }
 
@@ -116,20 +142,34 @@ class Builder {
         return this.service.show(this);
     }
 
+    _buildBody() {
+        return this._body;
+    }
+
     // Extending class must implement this
     _buildActions() {
-        throw new Error('Not implemented');
+        return null;
     }
 
     _build() {
+        let actionsHtml = '';
+        let actions = this._buildActions();
+        if (actions !== null) {
+            actionsHtml = `
+                <bs-modal-actions>
+                    ${actions}
+                </bs-modal-actions>
+            `;
+        }
+
         return `
             <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
                 <bs-modal dismissible="${this._dismissible}">
                     <bs-modal-title> ${this._title} </bs-modal-title>
-                    <bs-modal-body> ${this._body} </bs-modal-body>
-                    <bs-modal-actions>
-                        ${this._buildActions()}
-                    </bs-modal-actions>
+                    <bs-modal-body>
+                        ${this._buildBody()}
+                    </bs-modal-body>
+                    ${actionsHtml}
                 </bs-modal>
             </div>
         `;
@@ -139,7 +179,7 @@ class Builder {
 class AlertBuilder extends Builder {
     constructor(service) {
         super(service);
-        this._dismissible = true;
+        this.dismissible(true);
     }
 
     _buildActions() {
@@ -161,6 +201,21 @@ class ConfirmBuilder extends Builder {
                 ${this._ok}
             </bs-modal-action>
         `;
+    }
+}
+
+class PromptBuilder extends ConfirmBuilder {
+    constructor(service) {
+        super(service);
+        this.prompt(true);
+    }
+
+    _buildBody() {
+        return `
+            ${super._buildBody()}
+            <bs-input type="text" ng-model="vars.value">
+            </bs-input>
+        `
     }
 }
 
