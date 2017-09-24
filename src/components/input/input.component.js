@@ -29,7 +29,6 @@ export default {
     template: `
         <div class="form-group">
             <span class="form-control-label" for="{{ ::$id }}"
-                ng-if="::$ctrl.isSlotFilled('label')"
                 ng-transclude="label">
             </span>
 
@@ -72,7 +71,7 @@ export default {
         ngModel: 'ngModel',
     },
     transclude: {
-        label: '?label',
+        label: '?bsLabel',
         description: '?description',
         errors: '?errors',
     },
