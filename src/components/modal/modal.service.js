@@ -15,8 +15,10 @@ class bsModalService {
             .body(body);
     }
 
-    confirm() {
-
+    confirm(title, body) {
+        return new ConfirmBuilder(this)
+            .title(title)
+            .body(body);
     }
 
     prompt(title, message) {
@@ -142,6 +144,19 @@ class AlertBuilder extends Builder {
 
     _buildActions() {
         return `
+            <bs-modal-action ng-click="okFn()" type="primary">
+                ${this._ok}
+            </bs-modal-action>
+        `;
+    }
+}
+
+class ConfirmBuilder extends Builder {
+    _buildActions() {
+        return `
+            <bs-modal-action ng-click="cancelFn()" type="secondary">
+                ${this._cancel}
+            </bs-modal-action>
             <bs-modal-action ng-click="okFn()" type="primary">
                 ${this._ok}
             </bs-modal-action>
