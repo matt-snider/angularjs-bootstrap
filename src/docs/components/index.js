@@ -1,13 +1,17 @@
 import angular from 'angular';
 
-import ComponentProperty from './component-property.directive';
 import ComponentReference from './component-reference.component';
 import GettingStarted from './getting-started.component';
+
+import codeExample from './code-example.directive';
+import componentProperty from './component-property.directive';
 
 
 export default
     angular.module('bootstrap-docs.components', [])
         .component(ComponentReference.name, ComponentReference)
-        .directive(ComponentProperty.name, ComponentProperty)
         .component(GettingStarted.name, GettingStarted)
+
+        .directive(codeExample.name, codeExample)
+        .directive(componentProperty.name, componentProperty)
         .name;
