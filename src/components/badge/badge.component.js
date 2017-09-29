@@ -14,13 +14,22 @@ export default {
     name: 'bsBadge',
     controller: BadgeController,
     template: `
-        <span class="badge" ng-class="$ctrl.badgeTypeStyle"
+        <span ng-if="!$ctrl.href"
+            class="badge"
+            ng-class="$ctrl.badgeTypeStyle"
             ng-transclude>
         </span>
+        <a ng-if="$ctrl.href"
+            class="badge"
+            href="{{$ctrl.href}}"
+            ng-class="$ctrl.badgeTypeStyle"
+            ng-transclude>
+        </a>
     `,
     transclude: true,
     bindings: {
         type: '@',
         pill: '<',
+        href: '@',
     }
 };
