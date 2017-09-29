@@ -9,6 +9,7 @@ export class AlertController {
     }
 
     $onChanges(changes) {
+        this.type = this.type || this.bsContextualTypes.values()[0];
         this.bsContextualTypes.validateOrThrow(this.type, 'bsAlert');
         this.alertTypeStyle = `alert-${this.type}`;
     }
