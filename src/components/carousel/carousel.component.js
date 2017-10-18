@@ -31,7 +31,14 @@ class controller {
         this.interval = this.interval || DEFAULT_INTERVAL;
     }
 
-    $destroy() {
+    $onChanges(changes) {
+        // Reset so that interval is updated
+        if (changes.interval && !changes.interval.isFirstChange()) {
+            this.reset();
+        }
+    }
+
+    $onDestroy() {
         this.stop();
     }
 
@@ -41,17 +48,17 @@ class controller {
         }
         this.slides.push(carouselItem);
 
-        // If this is the first registration, start slide task
-        // Otherwise, simply remove it from the DOM.
-        if (this.slides.length === 1) {
-            this.start();
-        } else {
+        // Detach the element unless it is the first
+        if (this.slides.length > 1) {
             carouselItem.detach();
         }
+
+        // Start the carousel
+        this.start();
     }
 
     start() {
-        if (this.running) {
+        if (this.running || this.interval === false) {
             return;
         }
         this.running = true;
@@ -91,6 +98,11 @@ class controller {
 
     _select(index, isCycle = true, isReverse = false) {
         if (this.animating) {
+            return;
+        }
+
+        // If there is only one item, index === activeIndex
+        if (index === this.activeIndex) {
             return;
         }
 
