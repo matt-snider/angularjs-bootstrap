@@ -1,0 +1,11 @@
+.carousel-demo-slide-container {
+    height: 500px;
+    width: 100%;
+    background: grey;
+    text-align: center;
+}
+
+.carousel-demo-slide {
+    position: relative;
+    top: 40%;
+}
