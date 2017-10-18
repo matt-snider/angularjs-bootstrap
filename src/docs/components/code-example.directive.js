@@ -1,4 +1,5 @@
 import angular from 'angular';
+import {stripIndent} from 'common-tags';
 import Prism from 'prismjs';
 
 import 'prismjs/themes/prism-solarizedlight.css';
@@ -17,27 +18,17 @@ function codeExample() {
         },
         template($element) {
             let rawContents = $element.html();
-            codeSnippets.set($element, processContents(rawContents));
+            codeSnippets.set($element, stripIndent([rawContents]));
             return `
                 <div class="example">
                     ${$element.html()}
                 </div>
                 <div class="example-code">
-                    <pre>
-                        <code></code>
-                    </pre>
+                    <pre><code></code></pre>
                 </div>
             `;
         },
     };
-}
-
-function processContents(html) {
-    return html
-        .split('\n')
-        .map(x => x.trim())
-        .join('\n');
-
 }
 
 export default codeExample;
