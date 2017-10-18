@@ -39,6 +39,9 @@ export default {
                 <input class="form-control"
                     id="{{ ::$id }}"
                     type="{{ ::$ctrl.type }}"
+                    min="{{ $ctrl.min }}"
+                    max="{{ $ctrl.max }}"
+                    step="{{ $ctrl.step }}"
                     aria-describedby="{{ ::$id }}-help"
                     placeholder="{{ ::$ctrl.placeholder }}"
                     bs-fwd-ng-model="$ctrl.ngModel"
@@ -60,12 +63,19 @@ export default {
         </div>
     `,
     bindings: {
-        placeholder: '@',
         size: '@',
-        type: '@',
         addon: '@',
+
+        /* Standard input props */
+        type: '@',
+        placeholder: '@',
         isReadonly: '<',
         isDisabled: '<',
+
+        /* Range type */
+        min: '<',
+        max: '<',
+        step: '<',
     },
     require: {
         ngModel: 'ngModel',
