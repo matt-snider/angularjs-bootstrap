@@ -11,6 +11,9 @@ class controller {
         if (this.size && (this.size === 'sm' || this.size === 'lg')) {
             this.inputSizeStyle = `form-control-${this.size}`;
         }
+
+        // Default values
+        this.validation = this.validation !== undefined ? this.validation : true;
     }
 }
 
@@ -46,8 +49,8 @@ export default {
                     placeholder="{{ ::$ctrl.placeholder }}"
                     bs-fwd-ng-model="$ctrl.ngModel"
                     ng-class="[$ctrl.inputSizeStyle, {
-                               'is-valid': $ctrl.ngModel.$valid,
-                               'is-invalid': $ctrl.ngModel.$invalid}]"
+                        'is-valid': $ctrl.validation && $ctrl.ngModel.$valid,
+                        'is-invalid': $ctrl.validation && $ctrl.ngModel.$invalid}]"
                     ng-readonly="$ctrl.isReadonly"
                     ng-disabled="$ctrl.isDisabled">
 
@@ -65,6 +68,7 @@ export default {
     bindings: {
         size: '@',
         addon: '@',
+        validation: '<',
 
         /* Standard input props */
         type: '@',
