@@ -42,9 +42,12 @@ export default {
                 <input class="form-control"
                     id="{{ ::$id }}"
                     type="{{ ::$ctrl.type }}"
-                    min="{{ $ctrl.min }}"
-                    max="{{ $ctrl.max }}"
-                    step="{{ $ctrl.step }}"
+                    ng-min="$ctrl.min"
+                    ng-max="$ctrl.max"
+                    ng-step="$ctrl.step"
+                    ng-minlength="$ctrl.minlength"
+                    ng-maxlength="$ctrl.maxlength"
+                    ng-pattern="{{$ctrl.pattern}}"
                     aria-describedby="{{ ::$id }}-help"
                     placeholder="{{ ::$ctrl.placeholder }}"
                     bs-fwd-ng-model="$ctrl.ngModel"
@@ -76,10 +79,12 @@ export default {
         isReadonly: '<',
         isDisabled: '<',
 
-        /* Range type */
-        min: '<',
-        max: '<',
-        step: '<',
+        /* Validation */
+        min: '<ngMin',
+        max: '<ngMax',
+        minlength: '<ngMinlength',
+        maxlength: '<ngMaxlength',
+        pattern: '@ngPattern',
     },
     require: {
         ngModel: 'ngModel',
@@ -87,6 +92,6 @@ export default {
     transclude: {
         label: '?bsLabel',
         description: '?description',
-        errors: '?errors',
+        errors: '?bsErrors',
     },
 };
