@@ -13,6 +13,10 @@ class controller {
         this.readonlyExample = "Readonly value";
         this.readonlyPlaintextExample = "Readonly plaintext value";
         this.disabledExample = "Disabled value";
+
+        // Addon examples
+        this.addonExample1 = 2.50;
+        this.addonExample2 = "matt-snider";
     }
 }
 
@@ -149,5 +153,50 @@ export default {
             <bs-input type="text" ng-model="$ctrl.disabledExample" ng-disabled="true">
             </bs-input>
         </code-example>
+
+
+        <h2 class="mt-5"> Addons </h2>
+        <p>
+            Specify an addon to appear the left of the input with the <code>addon</code>
+            property.
+        </p>
+        <code-example>
+            <bs-input type="number" addon="$" ng-model="$ctrl.addonExample1">
+                <bs-label>Money</bs-label>
+            </bs-input>
+
+            <bs-input type="text" addon="@" ng-model="$ctrl.addonExample2">
+                <bs-label>Handle</bs-label>
+            </bs-input>
+        </code-example>
+
+
+        <h2 class="mt-5"> Component Reference </h2>
+        <component-reference name="bs-input">
+            <component-property name="type" type="String" default="text">
+                The type of input to use. Any of the standard values are accepted
+                except for:
+                <i>button</i>, <i>checkbox</i> (use <code>&lt;bs-checkbox&gt;</code>),
+                <i>image</i>, <i>radio</i> (use <code>&lt;bs-radio&gt;</code>),
+                <i>reset</i>, <i>submit</i>
+            </component-property>
+
+            <component-property name="size" type="String" default="md">
+                The size of the input, either <i>sm</i>, <i>md</i> (default) or <i>lg</i>.
+            </component-property>
+
+            <component-property name="validation" type="Boolean" default="true">
+                Disables/enables validation styles.
+            </component-property>
+
+            <component-property name="addon" type="String" default="">
+                Specifies a bootstrap <i>addon</i> which will appear to the left of
+                input. Useful for specifying a symbol or unit (e.g. $4.00, @handle).
+            </component-property>
+
+            <component-property name="placeholder" type="String" default="">
+                Specifies a placeholder for the input
+            </component-property>
+        </component-reference>
     `,
 };
