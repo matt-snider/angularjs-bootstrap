@@ -1,10 +1,18 @@
 class controller {
     constructor() {
+        // Basic examples
         this.emailValue = "matt.snider@example.com";
         this.urlValue = "https://github.com/matt-snider/angularjs-bootstrap";
         this.numberValue = 1;
+
+        // Errors examples
         this.errorsNumberExample = 42;
         this.errorsUrlExample = "https://canada.ca";
+
+        // Readonly/disabled examples
+        this.readonlyExample = "Readonly value";
+        this.readonlyPlaintextExample = "Readonly plaintext value";
+        this.disabledExample = "Disabled value";
     }
 }
 
@@ -75,8 +83,8 @@ export default {
                 <bs-label>Lucky Number</bs-label>
                 <bs-errors>
                     <required>Everyone needs a lucky number!</required>
-                    <minlength>That's too low to be a lucky number</minlength>
-                    <maxlength>That's too high to be a lucky number</maxlength>
+                    <min>That's too low to be a lucky number</min>
+                    <max>That's too high to be a lucky number</max>
                 </bs-errors>
             </bs-input>
 
@@ -87,6 +95,58 @@ export default {
                     <required>This field is required</required>
                     <pattern>Must be a URL in Canada</pattern>
                 </bs-errors>
+            </bs-input>
+        </code-example>
+
+
+        <h2 class="mt-5"> Sizing </h2>
+        <p>
+            Set the forms size using the <code>size</code> attribute: <i>sm</i>, <i>md (default)</i>, <i>lg</i>.
+        </p>
+        <code-example>
+            <bs-input type="text" size="lg" placeholder="Large input (lg)"
+                ng-model="$ctrl.sizingExample1">
+            </bs-input>
+
+            <bs-input type="text" placeholder="Default input (md)"
+                ng-model="$ctrl.sizingExample2">
+            </bs-input>
+
+            <bs-input type="text" size="sm" placeholder="Small input (sm)"
+                ng-model="$ctrl.sizingExample3">
+            </bs-input>
+        </code-example>
+
+
+        <h2 class="mt-5"> Help/Descriptions </h2>
+        <p>
+            Provide descriptions for inputs by using the <code>&lt;bs-description&gt;</code> tag.
+        </p>
+        <code-example>
+            <bs-input type="password" ng-model="$ctrl.helpExample">
+                <bs-label>Password</bs-label>
+                <bs-description>
+                    Your password must be 8-20 characters long, contain letters and numbers,
+                    and must not contain spaces, special characters, or emoji.
+                </bs-description>
+            </bs-input>
+        </code-example>
+
+
+        <h2 class="mt-5"> Disabled & Readonly </h2>
+        <p>
+            Use <code>ngReadonly</code> and <code>ngDisabled</code> to set these
+            states on the input. Specifying <code>plaintext</code> in addition to
+            <code>ngReadonly</code> will remove the default form field styling and
+            preserve the correct margin and padding.
+        </p>
+        <code-example>
+            <bs-input type="text" ng-model="$ctrl.readonlyExample" ng-readonly="true">
+            </bs-input>
+            <bs-input type="text" ng-readonly="true" plaintext="true"
+                ng-model="$ctrl.readonlyPlaintextExample">
+            </bs-input>
+            <bs-input type="text" ng-model="$ctrl.disabledExample" ng-disabled="true">
             </bs-input>
         </code-example>
     `,
