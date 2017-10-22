@@ -28,6 +28,10 @@ class controller {
         this.isOpen = true;
     }
 
+    clicked() {
+        this.close();
+    }
+
     /**
      * Close the dropdown if closeOnMouseleave is not disabled.
      *
@@ -71,6 +75,7 @@ export default {
                 ng-class="{show: $ctrl.isOpen}"
                 ng-mouseleave="$ctrl.mouseleave()"
                 ng-mouseenter="$ctrl.mouseenter()"
+                ng-click="$ctrl.clicked()"
                 ng-transclude="items">
             </div>
         </div>

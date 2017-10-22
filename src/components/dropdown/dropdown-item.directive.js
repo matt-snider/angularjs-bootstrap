@@ -11,7 +11,6 @@ function bsDropdownItem($compile) {
             );
             elem.append(tElement.html());
             elem.attr(tAttr.$attrs);
-            console.log('bsdropdownitme', elem[0].outerHTML);
             return elem[0].outerHTML;
         },
     }
