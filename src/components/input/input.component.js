@@ -39,8 +39,8 @@ export default {
                 <div class="input-group-addon" ng-if="::$ctrl.addon">
                     {{ ::$ctrl.addon }}
                 </div>
-                <input class="form-control"
-                    id="{{ ::$id }}"
+
+                <input id="{{ ::$id }}"
                     type="{{ ::$ctrl.type }}"
                     ng-min="$ctrl.min"
                     ng-max="$ctrl.max"
@@ -52,10 +52,13 @@ export default {
                     placeholder="{{ ::$ctrl.placeholder }}"
                     bs-fwd-ng-model="$ctrl.ngModel"
                     ng-class="[$ctrl.inputSizeStyle, {
-                        'is-valid': $ctrl.validation && $ctrl.ngModel.$valid,
-                        'is-invalid': $ctrl.validation && $ctrl.ngModel.$invalid}]"
-                    ng-readonly="$ctrl.isReadonly"
-                    ng-disabled="$ctrl.isDisabled">
+                        'is-valid': !$ctrl.ngModel.$pristine && $ctrl.validation && $ctrl.ngModel.$valid,
+                        'is-invalid': !$ctrl.ngModel.$pristine && $ctrl.validation && $ctrl.ngModel.$invalid,
+                        'form-control': !$ctrl.plaintext,
+                        'form-control-plaintext': $ctrl.plaintext,
+                        }]"
+                    ng-readonly="$ctrl.ngReadonly"
+                    ng-disabled="$ctrl.ngDisabled">
 
                 <div class="invalid-feedback"
                     ng-transclude="errors"
@@ -76,8 +79,9 @@ export default {
         /* Standard input props */
         type: '@',
         placeholder: '@',
-        isReadonly: '<',
-        isDisabled: '<',
+        ngReadonly: '<',
+        plaintext: '<',
+        ngDisabled: '<',
 
         /* Validation */
         min: '<ngMin',
@@ -91,7 +95,7 @@ export default {
     },
     transclude: {
         label: '?bsLabel',
-        description: '?description',
+        description: '?bsDescription',
         errors: '?bsErrors',
     },
 };
