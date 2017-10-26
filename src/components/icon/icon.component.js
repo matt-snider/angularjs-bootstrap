@@ -21,9 +21,12 @@ import octicons from 'octicons';
 
 import './icon.component.css';
 
+const DEFAULT_SIZE = 20;
+
 const PROPS = [
     'width',
     'height',
+    'fill',
     'class',
     'aria-label',
 ];
@@ -35,8 +38,8 @@ export default {
             throw Error(`bsIcon: no icon with symbol '${this.symbol}'`);
         }
 
-        // Properties
-        let config = {};
+        // Properties -- default width and height to 18
+        let config = {width: 20, height: 20};
         for (let p of PROPS) {
             if (!$attrs.hasOwnProperty(p)) {
                 continue;
