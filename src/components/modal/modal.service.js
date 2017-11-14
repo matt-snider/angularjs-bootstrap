@@ -86,6 +86,9 @@ class bsModalService {
     _remove(ctx) {
         ctx.elem.remove();
         ctx.scope.$destroy();
+
+        let body = this.$document.find('body');
+        body.removeClass('modal-open');
         this.bsBackdrop.hide();
     }
 }
