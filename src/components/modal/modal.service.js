@@ -34,8 +34,8 @@ class bsModalService {
         let scope = this.$rootScope.$new(true);
         let elem = this.$compile(builder._build())(scope);
         let deferred = this.$q.defer();
-        scope.okFn = () => this.hide(deferred.promise);
-        scope.cancelFn = () => this.cancel(deferred.promise);
+        scope.okFn = () => this.dismiss(deferred.promise, true);
+        scope.cancelFn = () => this.dismiss(deferred.promise, false);
         scope.vars = {value: builder._promptValue};
 
         // Save a reference to our context via promise
@@ -43,7 +43,7 @@ class bsModalService {
 
         // Also call cancel if dialog element is destroyed
         let bsModal = elem.find('bs-modal').eq(0);
-        bsModal.one('$destroy', () => this.cancel(deferred.promise));
+        bsModal.one('$destroy', () => this.reject(deferred.promise));
 
         // Append and show the element
         let body = this.$document.find('body');
@@ -57,23 +57,24 @@ class bsModalService {
         return deferred.promise;
     }
 
-    // Close a dialog and resolve with given response
-    hide(promise, response = null) {
+    // Close a dialog and resolve with given result (or prompt value)
+    dismiss(promise, result = null) {
         if (!dialogs.has(promise)) {
             throw new UnknownPromise();
         }
 
-        // Try to get value from prompt or default to false
+        // Try to get value from prompt otherwise use default
         let ctx = dialogs.get(promise);
-        if (response === null) {
-            response = ctx.scope.vars.value || true;
+        if (result && ctx.scope.vars.value) {
+            result = ctx.scope.vars.value;
         }
-        ctx.deferred.resolve(response);
+
+        ctx.deferred.resolve(result);
         this._remove(ctx);
     }
 
     // Close a dialog and reject
-    cancel(promise) {
+    reject(promise) {
         if (!dialogs.has(promise)) {
             throw new UnknownPromise();
         }
