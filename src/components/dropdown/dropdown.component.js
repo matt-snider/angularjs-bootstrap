@@ -9,11 +9,11 @@ class controller {
     }
 
     $onInit() {
-        // Defaults
-        this.closeOnMouseleave = this.closeOnMouseleave || true;
-
         // Indicate whether we are in a bsNavbar
         this.isInNavbar = !!this.bsNavbar;
+
+        // Defaults
+        this.closeOnMouseleave = (this.closeOnMouseleave || true) && !this.isInNavbar;
     }
 
     toggle() {
