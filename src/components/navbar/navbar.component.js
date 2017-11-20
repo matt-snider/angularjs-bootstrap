@@ -1,7 +1,17 @@
+import angular from 'angular';
 import {stripIndent} from 'common-tags';
 
 
+const EXPAND_THRESHOLDS = {
+    'xs': 0,
+    'sm': 576,
+    'md': 768,
+    'lg': 992,
+    'xl': 1200,
+};
+
 const NAVBAR_ITEMS_ID = 'bs-navbar-{{ ::$id }}-items';
+
 const TOGGLER = stripIndent`
     <button ng-click="$ctrl.toggleCollapse()"
         type="button"
@@ -18,18 +28,17 @@ let BRAND = '<span ng-transclude="brand"></span>';
 
 
 class controller {
-    constructor() {
+    constructor($window) {
+        this.$window = $window;
         this.styles = [];
+        this.expanded = false;
         this.collapsed = true;
     }
 
     $onInit() {
         // Expand -- default to 'md'
-        if (this.expand && (['sm', 'md', 'lg', 'xl'].includes(this.expand))) {
-            this.styles.push(`navbar-expand-${this.expand}`);
-        } else {
-            this.styles.push('navbar-expand-md');
-        }
+        this.expand = this.expand || 'md';
+        this.styles.push(`navbar-expand-${this.expand}`);
 
         // Themes
         // If no BG given, default to theme bg
@@ -42,6 +51,21 @@ class controller {
         if (this.bg && (this.bg === 'dark' || this.bg === 'light')) {
             this.styles.push(`bg-${this.bg}`);
         }
+
+        // Watch window resize to set collapse state.
+        this.expanded = this.recalculateExpandedness()
+        angular.element(this.$window)
+            .on('resize', () => {
+                this.expanded = this.recalculateExpandedness();
+            });
+    }
+
+    $onDestroy() {
+        angular.element(this.$window).off('resize');
+    }
+
+    recalculateExpandedness() {
+        return this.$window.innerWidth >= EXPAND_THRESHOLDS[this.expand];
     }
 
     toggleCollapse() {
