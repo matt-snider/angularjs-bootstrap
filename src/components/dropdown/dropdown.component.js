@@ -13,7 +13,7 @@ class controller {
         this.isInNavbar = !!this.bsNavbar;
 
         // Defaults
-        this.closeOnMouseleave = (this.closeOnMouseleave || true) && !this.isInNavbar;
+        this.closeOnMouseleave = this.closeOnMouseleave || true;
     }
 
     toggle() {
@@ -40,11 +40,19 @@ class controller {
      */
     mouseleave() {
         if (this.closeOnMouseleave && !this.__cancelClose) {
-            this.__closePromise = this.$timeout(() =>  this.close(), CLOSE_DELAY_MS);
+            this.__closePromise = this.$timeout(() => this.mouseleaveTimeout(), CLOSE_DELAY_MS);
             this.__closePromise
                 .catch(() => {})
                 .finally(() => this.__closePromise = null);
         }
+    }
+
+    // If we're inside a navbar that isn't expanded, do not close after mouseleave timeout.
+    mouseleaveTimeout() {
+        if (this.isInNavbar && !this.bsNavbar.expanded) {
+            return;
+        }
+        this.close();
     }
 
     mouseenter() {
