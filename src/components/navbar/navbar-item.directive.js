@@ -1,3 +1,6 @@
+import angular from 'angular';
+
+
 function bsNavbarItem($compile) {
     return {
         name: 'item',
@@ -17,14 +20,20 @@ function bsNavbarItem($compile) {
             element.addClass('nav-item');
 
             // Check if this contains a dropdown
-            if (element.find('bs-dropdown').length) {
+            let containsDropdown = element.find('bs-dropdown').length;
+            if (containsDropdown) {
                 element.addClass('dropdown')
             }
 
-            // Add ng-click so that when we click an item
-            // the dropdown closes if it's open
-            // element.attr('ng-click', '$')
-            element.on('click', () => {
+            // Upon clicking a navbar item, notify the navbar controller.
+            // If this item contains a dropdown, only fire this event
+            // when a dropdown item is clicked, *not* when we are simply
+            // toggling the open/close state of the dropdown.
+            element.on('click', (event) => {
+                let clicked = angular.element(event.target);
+                if (containsDropdown && !clicked.hasClass('dropdown-item')) {
+                    return;
+                }
                 bsNavbarCtrl.itemClicked()
                 scope.$apply();
             });
