@@ -3,7 +3,6 @@ import angular from 'angular';
 
 function bsNavbarItem($compile) {
     return {
-        name: 'item',
         require: '^?bsNavbar',
         link(scope, element, attr, bsNavbarCtrl) {
             if (!bsNavbarCtrl) return;
