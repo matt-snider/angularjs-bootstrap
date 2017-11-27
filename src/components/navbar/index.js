@@ -9,7 +9,9 @@ import NavbarItem from './navbar-item.directive';
 // Generated
 let Brand = createReplaceDirective(
     'bsBrand',
-    '<a href="#" class="navbar-brand"></a>',
+    (_, tAttrs) => tAttrs.href
+        ? '<a href="#" class="navbar-brand"></a>'
+        : '<span class="navbar-brand mb-0 h1"></span>',
     true,
 )
 
