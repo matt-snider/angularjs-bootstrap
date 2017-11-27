@@ -48,7 +48,7 @@ class controller {
                 this.bg = this.theme;
             }
         }
-        if (this.bg && (this.bg === 'dark' || this.bg === 'light')) {
+        if (this.bg) {
             this.styles.push(`bg-${this.bg}`);
         }
 
