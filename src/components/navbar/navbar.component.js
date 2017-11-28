@@ -42,6 +42,7 @@ class controller {
 
         // Themes
         // If no BG given, default to theme bg
+        this.theme = this.theme || 'light';
         if (this.theme && (this.theme === 'dark' || this.theme === 'light')) {
             this.styles.push(`navbar-${this.theme}`);
             if (!this.bg) {
@@ -50,6 +51,17 @@ class controller {
         }
         if (this.bg) {
             this.styles.push(`bg-${this.bg}`);
+        }
+
+        // Position
+        if (this.position) {
+            if (this.position === 'top' || this.position === 'bottom') {
+                this.styles.push(`fixed-${this.position}`);
+            } else if (this.position === 'sticky') {
+                this.styles.push('sticky-top');
+            } else {
+                throw new Error(`bsNavbar: invalid value for 'position' property: ${this.position}`);
+            }
         }
 
         // Watch window resize to set collapse state.
@@ -105,6 +117,7 @@ export default {
         theme: '@',
         bg: '@',
         togglerPosition: '@',
+        position: '@',
     },
     transclude: {
         brand: '?bsBrand',
