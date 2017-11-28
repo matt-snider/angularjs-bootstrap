@@ -110,7 +110,7 @@ export default {
             Set the <code>theme</code> proeprty to <i>dark</i> for dark background colors and
             <i>light</i> for light colors.
         </p>
-        <code-example class="navbar-theming-example">
+        <code-example class="navbar-example">
             <bs-navbar theme="dark" bg="dark">
                 <bs-brand>
                     Bootstrap
@@ -130,5 +130,103 @@ export default {
             </bs-navbar>
         </code-example>
 
+
+        <h2 class="mt-5"> Positioning </h2>
+        <p>
+            Set the <code>position</code> property to control the navbars placement.
+        </p>
+        <ul>
+            <li> <code>top</code>: fixed to top of viewport from edge to edge </li>
+            <li> <code>bottom</code>: fixed to bottom of viewport from edge to edge  </li>
+            <li> <code>sticky</code>: top of the viewport, from edge to edge, but only after you scroll past it j/li>
+        </ul>
+        <p>
+            Uses <a href="https://getbootstrap.com/docs/4.0/utilities/position/">Bootstrap's positioning classes</a>
+            to position the navbar.
+        </p>
+
+
+        <h2 class="mt-5"> Responsiveness </h2>
+        <p>
+            Control the viewport width at which the navbar expands or collapses by specifying
+            <code>expand</code> (<i>xs</i>, <i>sm</i>, <i>md</i>, <i>lg</i>, or <i>xl</i>).
+        </p>
+        <p>
+            Use <code>toggler-position</code> (<i>left</i> or <i>right</i>) to specify on which
+            side the toggler button should appear. The default value is <i>right</i>.
+        </p>
+        <p>
+            Resize the window and watch how the example navbars below behave.
+        </p>
+        <p>
+            See: <a href="https://getbootstrap.com/docs/4.0/components/navbar/#responsive-behaviors"></a>
+        </p>
+
+        <code-example class="navbar-example">
+            <bs-navbar expand="xl" toggler-position="left">
+                <bs-brand>
+                    Bootstrap
+                </bs-brand>
+
+                <bs-navbar-items>
+                    <bs-navbar-item href="#">Home</bs-navbar-item>
+                    <bs-navbar-item href="#">Link</bs-navbar-item>
+                    <bs-navbar-item href="#">Other Link</bs-navbar-item>
+                    <bs-navbar-item href="#">About</bs-navbar-item>
+                </bs-navbar-items>
+            </bs-navbar>
+
+            <bs-navbar expand="lg" toggler-position="left">
+                <bs-brand>
+                    Bootstrap
+                </bs-brand>
+
+                <bs-navbar-items>
+                    <bs-navbar-item href="#">Home</bs-navbar-item>
+                    <bs-navbar-item href="#">Link</bs-navbar-item>
+                    <bs-navbar-item href="#">Other Link</bs-navbar-item>
+                    <bs-navbar-item href="#">About</bs-navbar-item>
+                </bs-navbar-items>
+            </bs-navbar>
+
+            <bs-navbar expand="md" toggler-position="left">
+                <bs-brand>
+                    Bootstrap
+                </bs-brand>
+
+                <bs-navbar-items>
+                    <bs-navbar-item href="#">Home</bs-navbar-item>
+                    <bs-navbar-item href="#">Link</bs-navbar-item>
+                    <bs-navbar-item href="#">Other Link</bs-navbar-item>
+                    <bs-navbar-item href="#">About</bs-navbar-item>
+                </bs-navbar-items>
+            </bs-navbar>
+
+            <bs-navbar theme="light" expand="sm">
+                <bs-brand>
+                    Bootstrap
+                </bs-brand>
+
+                <bs-navbar-items>
+                    <bs-navbar-item href="#">Home</bs-navbar-item>
+                    <bs-navbar-item href="#">Link</bs-navbar-item>
+                    <bs-navbar-item href="#">Other Link</bs-navbar-item>
+                    <bs-navbar-item href="#">About</bs-navbar-item>
+                </bs-navbar-items>
+            </bs-navbar>
+
+            <bs-navbar theme="light" expand="xs">
+                <bs-brand>
+                    Bootstrap
+                </bs-brand>
+
+                <bs-navbar-items>
+                    <bs-navbar-item href="#">Home</bs-navbar-item>
+                    <bs-navbar-item href="#">Link</bs-navbar-item>
+                    <bs-navbar-item href="#">Other Link</bs-navbar-item>
+                    <bs-navbar-item href="#">About</bs-navbar-item>
+                </bs-navbar-items>
+            </bs-navbar>
+        </code-example>
     `,
 };
