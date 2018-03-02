@@ -3,10 +3,12 @@ import angular from 'angular';
 import components from '../../components';
 
 import AlertDemo from './alert-demo.component';
+import BadgeDemo from './badge-demo.component';
+import CarouselDemo from './carousel-demo.component';
 import DropdownDemo from './dropdown-demo.component';
 import IconDemo from './icon-demo.component';
 import InputDemo from './input-demo.component';
-import GettingStarted from './getting-started.component';
+import ModalDemo from './modal-demo.component';
 import NavbarDemo from './navbar-demo.component';
 
 
@@ -15,9 +17,11 @@ export default
             components,
         ])
         .component(AlertDemo.name, AlertDemo)
+        .component(BadgeDemo.name, BadgeDemo)
+        .component(CarouselDemo.name, CarouselDemo)
         .component(DropdownDemo.name, DropdownDemo)
         .component(IconDemo.name, IconDemo)
         .component(InputDemo.name, InputDemo)
-        .component(GettingStarted.name, GettingStarted)
+        .component(ModalDemo.name, ModalDemo)
         .component(NavbarDemo.name, NavbarDemo)
         .name;
