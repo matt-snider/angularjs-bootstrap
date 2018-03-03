@@ -1,4 +1,6 @@
 export class AlertController {
+
+    /* @ngInject */
     constructor($element, bsContextualTypes) {
         this.$element = $element;
         this.bsContextualTypes = bsContextualTypes;

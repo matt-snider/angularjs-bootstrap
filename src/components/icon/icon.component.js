@@ -33,7 +33,10 @@ const PROPS = [
 
 export default {
     name: 'bsIcon',
+
     template($attrs) {
+        'ngInject';
+
         if (!octicons.hasOwnProperty($attrs.symbol)) {
             throw Error(`bsIcon: no icon with symbol '${this.symbol}'`);
         }

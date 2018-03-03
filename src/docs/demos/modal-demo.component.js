@@ -1,4 +1,6 @@
 class controller {
+
+    /* @ngInject */
     constructor(bsModalService) {
         this.bsModalService = bsModalService;
     }

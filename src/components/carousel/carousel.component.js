@@ -10,6 +10,8 @@ const DEFAULT_INTERVAL = 5000;
  * and then calling register() with a jQlite object.
  */
 class controller {
+
+    /* @ngInject */
     constructor($animate, $element, $interval, $q) {
         this.$animate = $animate;
         this.$element = $element;

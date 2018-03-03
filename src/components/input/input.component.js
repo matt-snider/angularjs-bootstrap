@@ -2,6 +2,8 @@ import './input.component.css';
 
 
 class controller {
+
+    /* @ngInject */
     constructor() {
         this.inputSizeStyle = '';
     }

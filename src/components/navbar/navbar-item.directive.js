@@ -1,6 +1,7 @@
 import angular from 'angular';
 
 
+/* @ngInject */
 function bsNavbarItem($compile) {
     return {
         require: '^?bsNavbar',

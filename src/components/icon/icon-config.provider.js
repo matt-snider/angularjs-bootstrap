@@ -40,6 +40,8 @@ const provider = {
     // Return service
     // Inject with no style to get initial node
     $get(bsCssInjector) {
+        'ngInject';
+
         let styleNode = bsCssInjector.inject();
         let service = new BsIconService(styleNode, bsCssInjector);
         if (LIGHT in CONFIG || DARK in CONFIG) {
@@ -56,6 +58,7 @@ const provider = {
  * Allows updating global icon configuration at runtime.
  */
 class BsIconService {
+
     constructor(styleNode, bsCssInjector) {
         this.styleNode = styleNode;
         this.cssInjector = bsCssInjector;

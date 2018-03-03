@@ -2,6 +2,8 @@ const ALERT_TEXT = 'Create a new dismissible alert';
 
 
 class controller {
+
+    /* @ngInject */
     constructor($compile, $element, $scope, bsContextualTypes) {
         this.$compile = $compile;
         this.$scope = $scope;

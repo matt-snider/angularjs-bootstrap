@@ -28,6 +28,8 @@ let BRAND = '<span ng-transclude="brand"></span>';
 
 
 class controller {
+
+    /* @ngInject */
     constructor($window) {
         this.$window = $window;
         this.styles = [];
@@ -93,6 +95,8 @@ export default {
     name: 'bsNavbar',
     controller,
     template($element, $attrs) {
+        'ngInject';
+
         let togglerAndBrand;
         if (!$attrs.togglerPosition || $attrs.togglerPosition === 'right') {
             togglerAndBrand = BRAND + TOGGLER;

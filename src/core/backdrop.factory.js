@@ -3,6 +3,7 @@ import angular from 'angular';
 
 const BACKDROP = '<div class="modal-backdrop fade show"></div>';
 
+/* @ngInject */
 function bsBackdrop($document) {
     let active = false;
     let backdrop = angular.element(BACKDROP);
@@ -34,4 +35,4 @@ function bsBackdrop($document) {
 }
 
 
-export default bsBackdrop
+export default bsBackdrop;

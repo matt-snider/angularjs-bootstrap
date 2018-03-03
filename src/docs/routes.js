@@ -1,4 +1,6 @@
 export default function configRoutes($routeProvider) {
+    'ngInject';
+
     $routeProvider
         .when('/', {
             template: '<getting-started></getting-started>',

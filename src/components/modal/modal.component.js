@@ -1,4 +1,6 @@
 class controller {
+
+    /* @ngInject */
     constructor($element) {
         this.$element = $element;
     }

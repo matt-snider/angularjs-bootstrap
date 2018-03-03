@@ -1,4 +1,6 @@
 class controller {
+
+    /* @ngInject */
     constructor(bsContextualTypes) {
         this.types = bsContextualTypes.values();
         this.selectedType = this.types[0];

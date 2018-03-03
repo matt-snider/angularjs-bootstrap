@@ -2,6 +2,8 @@ const CLOSE_DELAY_MS = 500;
 const BUTTON_ID = "bsDropdownButton{{::$id}}"
 
 class controller {
+
+    /* @ngInject */
     constructor($timeout) {
         this.$timeout = $timeout;
         this.isOpen = false;

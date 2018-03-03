@@ -6,6 +6,7 @@ let CLASSES = {
 }
 
 
+/* @ngInject */
 function bsNavbarItems($compile) {
     return {
         restrict: 'E',

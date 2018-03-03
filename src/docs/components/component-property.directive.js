@@ -2,6 +2,8 @@ function componentProperty() {
     return {
         restrict: 'E',
         template(tElement, tAttrs) {
+            'ngInject';
+
             return `
                 <tr>
                     <td>${tAttrs.name}</td>

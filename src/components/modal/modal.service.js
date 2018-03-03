@@ -2,6 +2,8 @@ let dialogs = new WeakMap();
 
 
 class bsModalService {
+
+    /* @ngInject */
     constructor($compile, $document, $rootScope, $q, bsBackdrop) {
         this.$compile = $compile;
         this.$document = $document;

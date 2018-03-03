@@ -1,4 +1,6 @@
 export class BadgeController {
+
+    /* @ngInject */
     constructor(bsContextualTypes) {
         this.bsContextualTypes = bsContextualTypes;
     }

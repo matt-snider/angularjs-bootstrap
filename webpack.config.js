@@ -86,7 +86,15 @@ module.exports = function makeWebpackConfig() {
             // Transpile .js files using babel-loader
             // Compiles ES6 and ES7 into ES5 code
             test: /\.js$/,
-            loader: 'babel-loader',
+            use: [
+                {
+                    loader: 'ng-annotate-loader', options: {
+                        add: true
+                        // es6: true ,
+                    }
+                },
+                'babel-loader'
+            ],
             exclude: /node_modules/
         },
         {
@@ -174,19 +182,9 @@ module.exports = function makeWebpackConfig() {
             // Only emit files when there are no errors
             new webpack.NoErrorsPlugin(),
 
-            // Reference: http://webpack.github.io/docs/list-of-plugins.html#dedupeplugin
-            // Dedupe modules in the output
-            new webpack.optimize.DedupePlugin(),
-
-            // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
-            // Minify all javascript, switch loaders to minimizing mode
-            new webpack.optimize.UglifyJsPlugin(),
-
-            // Copy assets from the public folder
-            // Reference: https://github.com/kevlened/copy-webpack-plugin
-            new CopyWebpackPlugin([{
-                from: __dirname + '/src/public'
-            }])
+            // // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
+            // // Minify all javascript, switch loaders to minimizing mode
+            new webpack.optimize.UglifyJsPlugin()
         )
     }
 

@@ -2,7 +2,9 @@ import angular from 'angular';
 import {stripIndent} from 'common-tags';
 
 
+/* @ngInject */
 function bsErrors($compile) {
+
     return {
         restrict: 'E',
         require: '^?bsInput',
