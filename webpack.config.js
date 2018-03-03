@@ -49,11 +49,11 @@ module.exports = function makeWebpackConfig() {
 
         // Filename for entry points
         // Only adds hash in build mode
-        filename: isProd ? '[name].[hash].js' : '[name].bundle.js',
+        filename: '[name].bundle.js',
 
         // Filename for non-entry points
         // Only adds hash in build mode
-        chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
+        chunkFilename: '[name].bundle.js'
     };
 
     /**
@@ -184,7 +184,11 @@ module.exports = function makeWebpackConfig() {
 
             // // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
             // // Minify all javascript, switch loaders to minimizing mode
-            new webpack.optimize.UglifyJsPlugin()
+            new webpack.optimize.UglifyJsPlugin({
+                mangle: {
+                    keep_fnames: true,
+                },
+            })
         )
     }
 
