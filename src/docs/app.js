@@ -10,15 +10,14 @@ import template from './app.html';
 import configRoutes from './routes.js';
 
 
-export default
-    angular.module('bootstrap-docs', [
-            ngMessages,
-            ngRoute,
+angular.module('bootstrap-docs', [
+        ngMessages,
+        ngRoute,
 
-            components,
-            docComponents,
-            demos,
-        ])
-        .component('app', { template })
-        .config(configRoutes)
-        .name;
+        components,
+        docComponents,
+        demos,
+    ])
+    .component('app', { template })
+    .config(configRoutes)
+    .name;
