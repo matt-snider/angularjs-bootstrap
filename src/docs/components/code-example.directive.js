@@ -11,16 +11,12 @@ let codeSnippets = new WeakMap();
 function codeExample() {
     return {
         link($scope, $element) {
-            'ngInject';
-
             let codeElem = $element.find('code');
             let snippet = codeSnippets.get($element);
             let highlighted = Prism.highlight(snippet, Prism.languages.html);
             codeElem.html(highlighted);
         },
         template($element) {
-            'ngInject';
-
             let rawContents = $element.html();
             codeSnippets.set($element, stripIndent([rawContents]));
             return `

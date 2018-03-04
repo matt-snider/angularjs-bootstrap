@@ -22,8 +22,6 @@ function bsFwdNgModel() {
         },
         link: {
             pre(scope, element, attrs) {
-                'ngInject';
-
                 let ngModelCtrl = scope.bsFwdNgModel();
                 if (!ngModelCtrl) {
                     let msg = `bsFwdNgModel: expected ngModel instance, got ${attrs.bsFwdNgModel}`;
