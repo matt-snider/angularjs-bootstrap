@@ -2,7 +2,7 @@ import angular from 'angular';
 import ngMessages from 'angular-messages';
 
 import core from '../../core';
-import Input from './input.component';
+import Input from './input.component.ng';
 import Errors from './errors.directive';
 
 
@@ -11,6 +11,6 @@ export default
             ngMessages,
             core,
         ])
-        .component(Input.name, Input)
+        .component(...Input)
         .directive(Errors.name, Errors)
         .name;

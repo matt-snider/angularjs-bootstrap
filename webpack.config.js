@@ -80,7 +80,15 @@ module.exports = function makeWebpackConfig() {
 
     // Initialize module
     config.module = {
-        rules: [{
+        rules: [
+        {
+            // NG LOADER
+            // Reference: https://github.com/owen-it/ng-loader
+            // Load .ng component files.
+            test: /\.ng$/,
+            use: [ 'ng-loader' ],
+        },
+        {
             // JS LOADER
             // Reference: https://github.com/babel/babel-loader
             // Transpile .js files using babel-loader
