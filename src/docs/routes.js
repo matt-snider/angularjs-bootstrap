@@ -1,32 +1,67 @@
-export default function configRoutes($routeProvider) {
+export default function configRoutes($stateProvider) {
     'ngInject';
 
-    $routeProvider
-        .when('/', {
-            template: '<getting-started></getting-started>',
-        })
-        .when('/alert', {
-            template: '<alert-demo></alert-demo>',
-        })
-        .when('/badge', {
-            template: '<badge-demo></badge-demo>',
-        })
-        .when('/carousel', {
-            template: '<carousel-demo></carousel-demo>',
-        })
-        .when('/dropdown', {
-            template: '<dropdown-demo></dropdown-demo>',
-        })
-        .when('/icon', {
-            template: '<icon-demo></icon-demo>',
-        })
-        .when('/input', {
-            template: '<input-demo></input-demo>',
-        })
-        .when('/modal', {
-            template: '<modal-demo></modal-demo>',
-        })
-        .when('/navbar', {
-            template: '<navbar-demo></navbar-demo>',
-        });
+    const gettingStarted = {
+        name: 'gettingStarted',
+        url: '/',
+        component: 'gettingStarted',
+    };
+
+    const alertDemo = {
+        name: 'alertDemo',
+        url: '/alert',
+        component: 'alertDemo',
+    };
+
+    const badgeDemo = {
+        name: 'badgeDemo',
+        url: '/badge',
+        component: 'badgeDemo',
+    };
+
+    const carouselDemo = {
+        name: 'carouselDemo',
+        url: '/carousel',
+        component: 'carouselDemo',
+    };
+
+    const dropdownDemo = {
+        name: 'dropdownDemo',
+        url: '/dropdown',
+        component: 'dropdownDemo',
+    };
+
+    const iconDemo = {
+        name: 'iconDemo',
+        url: '/icon',
+        component: 'iconDemo',
+    };
+
+    const inputDemo = {
+        name: 'inputDemo',
+        url: '/input',
+        component: 'inputDemo',
+    };
+
+    const modalDemo = {
+        name: 'modalDemo',
+        url: '/modal',
+        component: 'modalDemo',
+    };
+
+    const navbarDemo = {
+        name: 'navbarDemo',
+        url: '/navbar',
+        component: 'navbarDemo',
+    };
+
+    $stateProvider.state(gettingStarted);
+    $stateProvider.state(alertDemo);
+    $stateProvider.state(badgeDemo);
+    $stateProvider.state(carouselDemo);
+    $stateProvider.state(dropdownDemo);
+    $stateProvider.state(iconDemo);
+    $stateProvider.state(inputDemo);
+    $stateProvider.state(modalDemo);
+    $stateProvider.state(navbarDemo);
 }

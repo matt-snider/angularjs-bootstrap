@@ -26,9 +26,9 @@
     "octicons": "^6.0.1"
   },
   "devDependencies": {
+    "@uirouter/angularjs": "1.0.15",
     "add": "^2.0.6",
     "angular-mocks": "^1.5.0",
-    "angular-route": "^1.6.6",
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",

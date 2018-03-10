@@ -1,6 +1,6 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router';
 import ngMessages from 'angular-messages';
-import ngRoute from 'angular-route';
 
 import components from '../components';
 import docComponents from './components';
@@ -9,15 +9,14 @@ import template from './app.html';
 
 import configRoutes from './routes.js';
 
-
-angular.module('bootstrap-docs', [
+angular
+    .module('bootstrap-docs', [
+        uiRouter,
         ngMessages,
-        ngRoute,
 
         components,
         docComponents,
         demos,
     ])
     .component('app', { template })
-    .config(configRoutes)
-    .name;
+    .config(configRoutes);

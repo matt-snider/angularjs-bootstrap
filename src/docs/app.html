@@ -1,6 +1,6 @@
 <div class="column">
     <bs-navbar theme="dark" position="top">
-        <bs-brand> angularjs-bootstrap </bs-brand>
+        <bs-brand ui-sref='gettingStarted'> angularjs-bootstrap </bs-brand>
 
         <!-- Items to left -->
         <bs-navbar-items>
@@ -8,14 +8,14 @@
                 <bs-dropdown>
                     <bs-label>Components</bs-label>
                     <bs-dropdown-items>
-                        <bs-dropdown-item href="#!/alert">Alert</bs-dropdown-item>
-                        <bs-dropdown-item href="#!/badge">Badge</bs-dropdown-item>
-                        <bs-dropdown-item href="#!/carousel">Carousel</bs-dropdown-item>
-                        <bs-dropdown-item href="#!/dropdown">Dropdown</bs-dropdown-item>
-                        <bs-dropdown-item href="#!/icon">Icon</bs-dropdown-item>
-                        <bs-dropdown-item href="#!/input">Input</bs-dropdown-item>
-                        <bs-dropdown-item href="#!/modal">Modal</bs-dropdown-item>
-                        <bs-dropdown-item href="#!/navbar">Navbar</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="alertDemo">Alert</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="badgeDemo">Badge</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="carouselDemo">Carousel</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="dropdownDemo">Dropdown</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="iconDemo">Icon</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="inputDemo">Input</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="modalDemo">Modal</bs-dropdown-item>
+                        <bs-dropdown-item ui-sref="navbarDemo">Navbar</bs-dropdown-item>
                     </bs-dropdown-items>
                 </bs-dropdown>
             </bs-navbar-item>
@@ -36,5 +36,5 @@
 </div>
 
 <div class="column m-4" style="padding-top: 50px;">
-    <ng-view></ng-view>
+    <ui-view></ui-view>
 </div>
