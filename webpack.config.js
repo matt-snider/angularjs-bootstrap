@@ -4,6 +4,8 @@
 var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var BaseHrefWebpackPlugin = require('base-href-webpack-plugin')
+    .BaseHrefWebpackPlugin;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -41,25 +43,27 @@ module.exports = (function makeWebpackConfig() {
      * Should be an empty object if it's generating a test build
      * Karma will handle setting it up for you when it's a test build
      */
-    config.output = isTest
-        ? {}
-        : {
-              // Absolute output directory
-              path: __dirname + '/dist',
+    if (isProd) {
+        config.output = {
+            // Absolute output directory
+            path: __dirname + '/dist',
 
-              // Output path from the view of the page
-              // Uses webpack-dev-server in development
-              publicPath: isProd ? '/' : 'http://localhost:8080/',
+            // Output path from the view of the page
+            // Uses webpack-dev-server in development
+            publicPath:
+                'https://cdn.rawgit.com/matt-snider/angularjs-bootstrap/gh-pages',
 
-              // Filename for entry points
-              // Only adds hash in build mode
-              filename: '[name].bundle.js',
+            // Filename for entry points
+            // Only adds hash in build mode
+            filename: '[name].bundle.js',
 
-              // Filename for non-entry points
-              // Only adds hash in build mode
-              chunkFilename: '[name].bundle.js',
-          };
-
+            // Filename for non-entry points
+            // Only adds hash in build mode
+            chunkFilename: '[name].bundle.js',
+        };
+    } else {
+        config.output = {};
+    }
     /**
      * Devtool
      * Reference: http://webpack.github.io/docs/configuration.html#devtool
@@ -183,6 +187,11 @@ module.exports = (function makeWebpackConfig() {
                 template: './src/docs/index.html',
                 inject: 'body',
             }),
+
+            // Reference: https://www.npmjs.com/package/base-href-webpack-plugin
+            // Inserts the <base> tag with the specified href
+            // When we build for gh-pages, we want to set the /angularjs-bootstrap prefix
+            new BaseHrefWebpackPlugin({ baseHref: '/angularjs-bootstrap' }),
 
             // Reference: https://github.com/webpack/extract-text-webpack-plugin
             // Extract css files
