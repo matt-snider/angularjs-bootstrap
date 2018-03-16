@@ -1,4 +1,4 @@
-export default function configRoutes($stateProvider) {
+export default function configRoutes($stateProvider, $urlRouterProvider) {
     'ngInject';
 
     const gettingStarted = {
@@ -64,4 +64,5 @@ export default function configRoutes($stateProvider) {
     $stateProvider.state(inputDemo);
     $stateProvider.state(modalDemo);
     $stateProvider.state(navbarDemo);
+    $urlRouterProvider.otherwise('/');
 }
