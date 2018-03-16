@@ -1,0 +1,24 @@
+<template>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                <span ng-transclude="title"></span>
+            </h5>
+            <p class="card-text">
+                <span ng-transclude="text"></span>
+            </p>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default ['bsCard', {
+        bindings: {
+
+        },
+        transclude: {
+            'title': '?bsCardTitle',
+            'text': '?bsCardText',
+        },
+    }];
+</script>

@@ -19,6 +19,12 @@ export default function configRoutes($stateProvider, $urlRouterProvider) {
         component: 'badgeDemo',
     };
 
+    const cardDemo = {
+        name: 'cardDemo',
+        url: '/card',
+        component: 'cardDemo',
+    };
+
     const carouselDemo = {
         name: 'carouselDemo',
         url: '/carousel',
@@ -58,6 +64,7 @@ export default function configRoutes($stateProvider, $urlRouterProvider) {
     $stateProvider.state(gettingStarted);
     $stateProvider.state(alertDemo);
     $stateProvider.state(badgeDemo);
+    $stateProvider.state(cardDemo);
     $stateProvider.state(carouselDemo);
     $stateProvider.state(dropdownDemo);
     $stateProvider.state(iconDemo);
