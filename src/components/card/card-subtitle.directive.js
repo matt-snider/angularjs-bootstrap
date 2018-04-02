@@ -1,8 +1,8 @@
-const DEFAULT_HEADING = 'h5';
+const DEFAULT_HEADING = 'h6';
 const HEADINGS = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']);
 
 export default [
-    'bsCardTitle',
+    'bsCardSubtitle',
     () => ({
         restrict: 'EA',
         require: '^bsCard',
@@ -16,7 +16,7 @@ export default [
             } else {
                 attrs.$addClass(DEFAULT_HEADING);
             }
-            attrs.$addClass('card-title d-block');
+            attrs.$addClass('card-subtitle mb-2 text-muted d-block');
         },
     }),
 ];
