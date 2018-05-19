@@ -7,11 +7,10 @@ import codeExample from './code-example.directive';
 import componentProperty from './component-property.directive';
 
 
-export default
-    angular.module('bootstrap-docs.components', [])
-        .component(ComponentReference.name, ComponentReference)
-        .component(GettingStarted.name, GettingStarted)
-
-        .directive(codeExample.name, codeExample)
-        .directive(componentProperty.name, componentProperty)
-        .name;
+export default angular
+    .module('bootstrap-docs.components', [])
+    .component(ComponentReference.name, ComponentReference)
+    .component(GettingStarted.name, GettingStarted)
+    .directive(codeExample.name, codeExample)
+    .directive(componentProperty.name, componentProperty)
+    .name;

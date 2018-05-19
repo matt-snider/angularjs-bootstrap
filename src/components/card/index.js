@@ -1,7 +1,7 @@
 import angular from 'angular';
 
 import core from '../../core';
-import Card from './card.component.ng';
+import Card from './card.component';
 import CardLink from './card-link.directive';
 import CardSubtitle from './card-subtitle.directive';
 import CardTitle from './card-title.directive';

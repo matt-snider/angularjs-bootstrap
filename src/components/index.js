@@ -13,19 +13,19 @@ import modalModule from './modal';
 import navbarModule from './navbar';
 
 // prettier-ignore
-export default
-    angular.module('bootstrap.components', [
-            coreModule,
+export default angular
+    .module('bootstrap.components', [
+        coreModule,
 
-            // Component modules
-            alertModule,
-            badgeModule,
-            cardModule,
-            carouselModule,
-            dropdownModule,
-            iconModule,
-            inputModule,
-            modalModule,
-            navbarModule,
-        ])
-        .name;
+        // Component modules
+        alertModule,
+        badgeModule,
+        cardModule,
+        carouselModule,
+        dropdownModule,
+        iconModule,
+        inputModule,
+        modalModule,
+        navbarModule,
+    ])
+    .name;

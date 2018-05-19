@@ -1,0 +1,26 @@
+<div class="form-group">
+    <span class="form-control-label" for="{{ ::$id }}" ng-transclude="label">
+    </span>
+
+    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon" ng-if="::$ctrl.addon">
+            {{ ::$ctrl.addon }}
+        </div>
+
+        <input id="{{ ::$id }}" type="{{ ::$ctrl.type }}" ng-min="$ctrl.min" ng-max="$ctrl.max" ng-step="$ctrl.step"
+            ng-minlength="$ctrl.minlength" ng-maxlength="$ctrl.maxlength" ng-pattern="{{$ctrl.pattern}}"
+            aria-describedby="{{ ::$id }}-help" placeholder="{{ ::$ctrl.placeholder }}" bs-fwd-ng-model="$ctrl.ngModel"
+            ng-class="[$ctrl.inputSizeStyle, {
+                'is-valid': !$ctrl.ngModel.$pristine && $ctrl.validation && $ctrl.ngModel.$valid,
+                'is-invalid': !$ctrl.ngModel.$pristine && $ctrl.validation && $ctrl.ngModel.$invalid,
+                'form-control': !$ctrl.plaintext,
+                'form-control-plaintext': $ctrl.plaintext,
+                }]" ng-readonly="$ctrl.ngReadonly" ng-disabled="$ctrl.ngDisabled">
+
+        <div class="invalid-feedback" ng-transclude="errors" ng-messages="$ctrl.ngModel.$error">
+        </div>
+    </div>
+
+    <small id="{{ ::$id }}-help" class="form-text text-muted" ng-transclude="description">
+    </small>
+</div>

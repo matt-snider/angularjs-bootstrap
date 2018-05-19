@@ -4,7 +4,7 @@ import components from '../../components';
 
 import AlertDemo from './alert-demo.component';
 import BadgeDemo from './badge-demo.component';
-import CardDemo from './card-demo.component.ng';
+import CardDemo from './card-demo.component';
 import CarouselDemo from './carousel-demo.component';
 import DropdownDemo from './dropdown-demo.component';
 import IconDemo from './icon-demo.component';

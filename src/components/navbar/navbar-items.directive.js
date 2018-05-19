@@ -3,11 +3,10 @@ let RIGHT_PLACEMENT = 'right';
 let CLASSES = {
     [LEFT_PLACEMENT]: 'mr-auto',
     [RIGHT_PLACEMENT]: 'ml-auto',
-}
+};
 
 
-/* @ngInject */
-function bsNavbarItems($compile) {
+function bsNavbarItems() {
     return {
         restrict: 'E',
         require: '^?bsNavbar',

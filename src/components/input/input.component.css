@@ -1,0 +1,16 @@
+/**
+* Change flow of input-group which usually aligns '[addon][input]' so that any
+* error messages will be displayed on a new line and not '[addon][input][errors]'
+*/
+bs-input .input-group {
+    flex-wrap: wrap;
+}
+
+bs-input .input-group:after {
+    content: '';
+    width: 100%;
+}
+
+bs-input .invalid-feedback {
+    order: 1;
+}
