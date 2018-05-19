@@ -1,6 +1,4 @@
 import angular from 'angular';
-import { createReplaceDirective } from './utils';
-
 import fwdNgModel from './fwd-ng-model.directive';
 
 import backdrop from './backdrop.factory';

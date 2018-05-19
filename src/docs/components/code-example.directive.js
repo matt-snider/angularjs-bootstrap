@@ -1,5 +1,4 @@
-import angular from 'angular';
-import {stripIndent} from 'common-tags';
+import { stripIndent } from 'common-tags';
 import Prism from 'prismjs';
 
 import 'prismjs/themes/prism-solarizedlight.css';

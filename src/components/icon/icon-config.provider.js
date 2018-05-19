@@ -1,4 +1,4 @@
-import {stripIndent} from 'common-tags';
+import { stripIndent } from 'common-tags';
 
 const LIGHT = 'light';
 const DARK = 'dark';
@@ -49,7 +49,7 @@ const provider = {
         }
         return service;
     },
-}
+};
 
 
 /**
@@ -77,7 +77,7 @@ class BsIconService {
     __reload() {
         this.cssInjector.update(
             this.styleNode,
-            `${css(LIGHT)}\n\n${css(DARK)}`,
+            `${css(LIGHT)}\n\n${css(DARK)}`
         );
     }
 }

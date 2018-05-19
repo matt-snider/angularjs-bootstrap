@@ -38,10 +38,10 @@ class bsModalService {
         let deferred = this.$q.defer();
         scope.okFn = () => this.dismiss(deferred.promise, true);
         scope.cancelFn = () => this.dismiss(deferred.promise, false);
-        scope.vars = {value: builder._promptValue};
+        scope.vars = { value: builder._promptValue };
 
         // Save a reference to our context via promise
-        dialogs.set(deferred.promise, {scope, elem, deferred});
+        dialogs.set(deferred.promise, { scope, elem, deferred });
 
         // Also call cancel if dialog element is destroyed
         let bsModal = elem.find('bs-modal').eq(0);
@@ -226,7 +226,7 @@ class PromptBuilder extends ConfirmBuilder {
             ${super._buildBody()}
             <bs-input type="text" ng-model="vars.value">
             </bs-input>
-        `
+        `;
     }
 }
 

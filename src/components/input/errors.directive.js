@@ -1,5 +1,4 @@
-import angular from 'angular';
-import {stripIndent} from 'common-tags';
+import { stripIndent } from 'common-tags';
 
 
 /* @ngInject */
@@ -13,7 +12,7 @@ function bsErrors($compile) {
 
             let errors = element.children();
             let ngMessages = [];
-            for(let i = 0; i < errors.length; i++) {
+            for (let i = 0; i < errors.length; i++) {
                 let node = errors[i];
                 ngMessages.push(
                     stripIndent`
@@ -34,7 +33,7 @@ function bsErrors($compile) {
             `)(scope);
             element.replaceWith(newNode);
         },
-    }
+    };
 }
 
 export default bsErrors;

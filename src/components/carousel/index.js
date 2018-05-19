@@ -13,12 +13,12 @@ import 'bootstrap/dist/css/bootstrap-reboot.css';
 import 'bootstrap/dist/css/bootstrap-grid.css';
 
 
-export default
-    angular.module('bootstrap.carousel', [
-            ngAnimate,
-            core,
-        ])
-        .component(Carousel.name, Carousel)
-        .directive(carouselItem.name, carouselItem)
-        .directive(carouselCaption.name, carouselCaption)
-        .name;
+export default angular
+    .module('bootstrap.carousel', [
+        ngAnimate,
+        core,
+    ])
+    .component(Carousel.name, Carousel)
+    .directive(carouselItem.name, carouselItem)
+    .directive(carouselCaption.name, carouselCaption)
+    .name;

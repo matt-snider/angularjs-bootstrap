@@ -7,10 +7,10 @@ export class AlertController {
     }
 
     $onInit() {
-        this.dismissible = this.dismissible || false
+        this.dismissible = this.dismissible || false;
     }
 
-    $onChanges(changes) {
+    $onChanges() {
         this.type = this.type || this.bsContextualTypes.values()[0];
         this.bsContextualTypes.validateOrThrow(this.type, 'bsAlert');
         this.alertTypeStyle = `alert-${this.type}`;

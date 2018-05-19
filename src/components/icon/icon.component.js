@@ -16,12 +16,9 @@
  *
  * Setting class="light" will invert the color
  */
-import angular from 'angular';
 import octicons from 'octicons';
 
 import './icon.component.css';
-
-const DEFAULT_SIZE = 20;
 
 const PROPS = [
     'width',
@@ -42,7 +39,7 @@ export default {
         }
 
         // Properties -- default width and height to 18
-        let config = {width: 20, height: 20};
+        let config = { width: 20, height: 20 };
         for (let p of PROPS) {
             if (!$attrs.hasOwnProperty(p)) {
                 continue;

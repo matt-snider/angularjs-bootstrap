@@ -123,5 +123,5 @@ export default {
                 Whether the alert may be dismissed.
             </component-property>
         </component-reference>
-    `
-}
+    `,
+};

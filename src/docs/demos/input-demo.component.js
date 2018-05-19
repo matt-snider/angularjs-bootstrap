@@ -1,22 +1,22 @@
 class controller {
     constructor() {
         // Basic examples
-        this.emailValue = "matt.snider@example.com";
-        this.urlValue = "https://github.com/matt-snider/angularjs-bootstrap";
+        this.emailValue = 'matt.snider@example.com';
+        this.urlValue = 'https://github.com/matt-snider/angularjs-bootstrap';
         this.numberValue = 1;
 
         // Errors examples
         this.errorsNumberExample = 42;
-        this.errorsUrlExample = "https://canada.ca";
+        this.errorsUrlExample = 'https://canada.ca';
 
         // Readonly/disabled examples
-        this.readonlyExample = "Readonly value";
-        this.readonlyPlaintextExample = "Readonly plaintext value";
-        this.disabledExample = "Disabled value";
+        this.readonlyExample = 'Readonly value';
+        this.readonlyPlaintextExample = 'Readonly plaintext value';
+        this.disabledExample = 'Disabled value';
 
         // Addon examples
         this.addonExample1 = 2.50;
-        this.addonExample2 = "matt-snider";
+        this.addonExample2 = 'matt-snider';
     }
 }
 

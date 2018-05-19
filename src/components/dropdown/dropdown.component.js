@@ -1,5 +1,5 @@
 const CLOSE_DELAY_MS = 500;
-const BUTTON_ID = "bsDropdownButton{{::$id}}"
+const BUTTON_ID = 'bsDropdownButton{{::$id}}';
 
 class controller {
 
@@ -44,7 +44,7 @@ class controller {
         if (this.closeOnMouseleave && !this.__cancelClose) {
             this.__closePromise = this.$timeout(() => this.mouseleaveTimeout(), CLOSE_DELAY_MS);
             this.__closePromise
-                .catch(() => {})
+                .catch(() => { })
                 .finally(() => this.__closePromise = null);
         }
     }
@@ -97,4 +97,4 @@ export default {
         label: '?bsLabel',
         items: '?bsDropdownItems',
     }
-}
+};

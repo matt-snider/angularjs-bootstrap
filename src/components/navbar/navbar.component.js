@@ -1,5 +1,5 @@
 import angular from 'angular';
-import {stripIndent} from 'common-tags';
+import { stripIndent } from 'common-tags';
 
 
 const EXPAND_THRESHOLDS = {
@@ -67,7 +67,7 @@ class controller {
         }
 
         // Watch window resize to set collapse state.
-        this.expanded = this.recalculateExpandedness()
+        this.expanded = this.recalculateExpandedness();
         angular.element(this.$window)
             .on('resize', () => {
                 this.expanded = this.recalculateExpandedness();

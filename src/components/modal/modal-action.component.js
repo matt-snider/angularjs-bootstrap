@@ -5,7 +5,7 @@ class controller {
         this.bsContextualTypes = bsContextualTypes;
     }
 
-    $onChanges(changes) {
+    $onChanges() {
         this.type = this.type || 'primary';
         this.bsContextualTypes.validateOrThrow(this.type, 'bsModalAction');
         this.btnTypeStyle = `btn-${this.type}`;

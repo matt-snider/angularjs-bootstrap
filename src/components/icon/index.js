@@ -15,14 +15,14 @@ function configStyles(bsIconConfigProvider) {
 
 
 /* @ngInject */
-function injectStyles(bsIconConfig) {
+function injectStyles() {
 }
 
 
-export default
-    angular.module('bootstrap.icon', [ core ])
-        .component(Icon.name, Icon)
-        .provider(IconConfigProvider.name, IconConfigProvider)
-        .config(configStyles)
-        .run(injectStyles)
-        .name;
+export default angular
+    .module('bootstrap.icon', [core])
+    .component(Icon.name, Icon)
+    .provider(IconConfigProvider.name, IconConfigProvider)
+    .config(configStyles)
+    .run(injectStyles)
+    .name;

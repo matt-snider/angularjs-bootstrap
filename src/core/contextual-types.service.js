@@ -1,4 +1,4 @@
-import {oneLine} from 'common-tags';
+import { oneLine } from 'common-tags';
 
 export const TYPES = [
     'primary',
@@ -24,14 +24,14 @@ class bsContextualTypes {
     }
 
     validateOrThrow(value, sourceComponent) {
-        if(this.validate(value)) {
+        if (this.validate(value)) {
             return;
         }
         sourceComponent = sourceComponent || 'bsAngular';
-        throw Error(oneLine
-            `${sourceComponent}: invalid type provided '${value}'.
-             Valid types are: ${TYPES}`
-        );
+        throw Error(oneLine`
+            ${sourceComponent}: invalid type provided '${value}'.
+            Valid types are: ${TYPES}
+        `);
     }
 }
 

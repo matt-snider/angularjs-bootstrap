@@ -34,7 +34,7 @@ export function createReplaceDirective(name, wrapWith, copyAttributes = false) {
     let implementation;
     if (!wrapWith) {
         implementation = {
-            compile(tElement, tAttr) {
+            compile() {
                 return ($scope, $element) => {
                     if ($element.children().length) {
                         $element.replaceWith($element.children());
@@ -78,6 +78,6 @@ export function createReplaceDirective(name, wrapWith, copyAttributes = false) {
 // standard .directive(fn.name, fn) pattern
 export function createDirectiveFn(name, config) {
     let directiveFn = () => config;
-    Object.defineProperty(directiveFn, "name", {value: name});
+    Object.defineProperty(directiveFn, 'name', { value: name });
     return directiveFn;
 }

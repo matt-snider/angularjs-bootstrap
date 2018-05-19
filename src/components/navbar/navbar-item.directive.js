@@ -22,7 +22,7 @@ function bsNavbarItem($compile) {
             // Check if this contains a dropdown
             let containsDropdown = element.find('bs-dropdown').length;
             if (containsDropdown) {
-                element.addClass('dropdown')
+                element.addClass('dropdown');
             }
 
             // Upon clicking a navbar item, notify the navbar controller.
@@ -34,7 +34,7 @@ function bsNavbarItem($compile) {
                 if (containsDropdown && !clicked.hasClass('dropdown-item')) {
                     return;
                 }
-                bsNavbarCtrl.itemClicked()
+                bsNavbarCtrl.itemClicked();
                 scope.$apply();
             });
         }

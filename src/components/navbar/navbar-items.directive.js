@@ -35,7 +35,7 @@ function bsNavbarItems() {
             // Modify class to work like a ul
             element.addClass(`navbar-nav ${CLASSES[placement]}`);
         },
-    }
+    };
 }
 
 export default bsNavbarItems;
