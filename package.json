@@ -2,9 +2,9 @@
   "name": "angularjs-bootstrap",
   "version": "0.0.1",
   "description": "AngularJS components for Bootstrap 4",
-  "main": "lib/angularjs-bootstrap.js",
+  "main": "dist/lib/angularjs-bootstrap.js",
   "scripts": {
-    "lib:build": "webpack --bail --progress --profile",
+    "lib:build": "webpack --env dev && webpack --env build",
     "docs:build": "webpack --env build --bail --progress --profile",
     "docs:server": "webpack-dev-server --history-api-fallback --inline --progress",
     "test": "karma start",
@@ -29,15 +29,18 @@
     "url": "https://github.com/matt-snider/angularjs-bootstrap/issues"
   },
   "homepage": "https://github.com/matt-snider/angularjs-bootstrap",
-  "dependencies": {
-    "angular": "1.6.10",
-    "angular-animate": "1.6.6",
-    "angular-messages": "1.6.10",
-    "octicons": "6.0.1"
+  "peerDependencies": {
+    "angular": ">=1.5.0",
+    "angular-animate": ">=1.5.0",
+    "angular-messages": ">=1.5.0",
+    "octicons": "*"
   },
   "devDependencies": {
     "@uirouter/angularjs": "1.0.15",
     "add": "2.0.6",
+    "angular": "1.6.10",
+    "angular-animate": "1.6.6",
+    "angular-messages": "1.6.10",
     "angular-mocks": "1.6.10",
     "autoprefixer": "6.7.7",
     "babel-cli": "6.26.0",
@@ -58,6 +61,7 @@
     "file-loader": "0.9.0",
     "html-webpack-plugin": "3.2.0",
     "node-libs-browser": "2.0.0",
+    "octicons": "^6.0.1",
     "prismjs": "1.14.0",
     "raw-loader": "0.5.1",
     "rimraf": "2.6.2",
