@@ -7,4 +7,4 @@ export default angular
     .module('bootstrap', [
         core,
         components,
-    ]);
+    ]).name;

@@ -1,4 +1,9 @@
-/* global module, */
+/* global require, module, */
+const env = require('yargs').argv.env;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isBuild = env === 'build';
+
 const config = {
     devtool: 'source-map',
     module: {
@@ -40,18 +45,24 @@ const config = {
                 loader: 'raw-loader',
             },
             {
-                // css-loader/style-loader
-                // Reference: https://github.com/webpack/css-loader
-                // Reference: https://github.com/webpack/style-loader
-                // Allow loading css through js
+                // mini-css-extract
+                // https://github.com/webpack-contrib/mini-css-extract-plugin
                 test: /\.css$/,
                 use: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader' }
+                    isBuild ? MiniCssExtractPlugin.loader : 'style-loader',
+                    'css-loader'
                 ]
-            },
+            }
         ],
-    }
+    },
+    plugins: [
+        // mini-css-extract
+        // https://github.com/webpack-contrib/mini-css-extract-plugin
+        new MiniCssExtractPlugin({
+            filename: 'angularjs-bootstrap.[name].css',
+            chunkFilename: 'angularjs-bootstrap.[name].css',
+        })
+    ]
 };
 
 module.exports = config;

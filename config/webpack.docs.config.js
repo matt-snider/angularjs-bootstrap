@@ -12,14 +12,17 @@ const baseConfig = require('./webpack.base.config');
 
 let output = {};
 let mode = 'development';
-let plugins = [
+let plugins = baseConfig.plugins;
+
+plugins.push(
     // HtmlWebpackPlugin
     // https://github.com/jantimon/html-webpack-plugin
     new HtmlWebpackPlugin({
         template: path.resolve('./src/docs/index.html'),
         inject: 'body',
     })
-];
+);
+
 if (env === 'build') {
     output = {
         path: path.resolve('./dist/docs'),
