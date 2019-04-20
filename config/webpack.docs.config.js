@@ -26,7 +26,7 @@ plugins.push(
 if (env === 'build') {
     output = {
         path: path.resolve('./dist/docs'),
-        publicPath: 'https://cdn.rawgit.com/matt-snider/angularjs-bootstrap/gh-pages',
+        publicPath: 'https://matt-snider.github.io/angularjs-bootstrap/',
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
     };
