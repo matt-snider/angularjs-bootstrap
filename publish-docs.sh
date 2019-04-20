@@ -6,7 +6,7 @@ function important() {
 
 # Build the project
 important "Building the docs..."
-npm run build
+npm run docs:build
 
 # Switch to subdirectory, commit and push
 important "Committing..."

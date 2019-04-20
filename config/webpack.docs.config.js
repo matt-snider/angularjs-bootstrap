@@ -25,7 +25,7 @@ plugins.push(
 
 if (env === 'build') {
     output = {
-        path: path.resolve('./dist/docs'),
+        path: path.resolve('./dist'),
         publicPath: 'https://matt-snider.github.io/angularjs-bootstrap/',
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
