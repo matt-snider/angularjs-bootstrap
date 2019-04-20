@@ -1,4 +1,4 @@
-function bsCarouselCaption() {
+function directive() {
     return {
         restrict: 'E',
         replace: true,
@@ -11,4 +11,4 @@ function bsCarouselCaption() {
     };
 }
 
-export default bsCarouselCaption;
+export default ['bsCarouselCaption', directive];

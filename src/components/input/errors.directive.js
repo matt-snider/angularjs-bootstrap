@@ -1,6 +1,5 @@
 import { stripIndent } from 'common-tags';
 
-
 /* @ngInject */
 function bsErrors($compile) {
 
@@ -36,4 +35,4 @@ function bsErrors($compile) {
     };
 }
 
-export default bsErrors;
+export default ['bsErrors', bsErrors];

@@ -132,8 +132,7 @@ class controller {
 }
 
 
-export default {
-    name: 'bsCarousel',
+export default ['bsCarousel' ,{
     controller,
     template: `
         <div class="carousel slide">
@@ -168,4 +167,4 @@ export default {
         indicators: '<',
     },
     transclude: true,
-};
+}];

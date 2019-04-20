@@ -6,7 +6,7 @@ import {default as Alert, AlertController} from './alert.component';
 
 let alertModule =
     angular.module('bootstrap.alert', [core])
-        .component(Alert.name, Alert);
+        .component(...Alert);
 
 
 // Aliases for alerts
@@ -21,8 +21,8 @@ function makeAlert(type) {
     controller.prototype.type = type;
 
     let name = `bsAlert${type.charAt(0).toUpperCase() + type.slice(1)}`;
-    let bindings = Object.assign({}, Alert.bindings);
-    let component = Object.assign({}, Alert, { name, bindings, controller });
+    let bindings = Object.assign({}, Alert[1].bindings);
+    let component = Object.assign({}, Alert[1], { name, bindings, controller });
     delete bindings.type;
     return component;
 }

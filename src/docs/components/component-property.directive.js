@@ -21,4 +21,4 @@ function componentProperty() {
     };
 }
 
-export default componentProperty;
+export default ['componentProperty', componentProperty];

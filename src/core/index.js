@@ -7,8 +7,9 @@ import contextualTypes from './contextual-types.service';
 
 export default angular
     .module('bootstrap.core', [])
-    .directive(fwdNgModel.name, fwdNgModel)
-    .factory(backdrop.name, backdrop)
-    .provider(cssInjector.name, cssInjector)
-    .service(contextualTypes.name, contextualTypes)
+    .directive('bsFwdNgModel', fwdNgModel)
+    .factory('bsBackdrop', backdrop)
+    .provider('bsCssInjector', cssInjector)
+    .service('bsContextualTypes', contextualTypes)
+    // .service(contextualTypes.name, contextualTypes)
     .name;

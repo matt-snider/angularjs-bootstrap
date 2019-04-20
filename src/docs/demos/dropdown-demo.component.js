@@ -1,5 +1,4 @@
-export default {
-    name: 'dropdownDemo',
+export default ['dropdownDemo', {
     template: `
         <h1 class="display-4"> Dropdowns </h1>
         <p class="lead">
@@ -29,4 +28,4 @@ export default {
             </component-property>
         </component-reference>
     `,
-};
+}];

@@ -75,9 +75,8 @@ export function createReplaceDirective(name, wrapWith, copyAttributes = false) {
 
 
 // Name the function so that we can use it with our
-// standard .directive(fn.name, fn) pattern
+// standard .directive(...fn) pattern
 export function createDirectiveFn(name, config) {
     let directiveFn = () => config;
-    Object.defineProperty(directiveFn, 'name', { value: name });
-    return directiveFn;
+    return [name, directiveFn];
 }

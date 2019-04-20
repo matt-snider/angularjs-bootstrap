@@ -31,8 +31,6 @@ function css(type) {
  * Allows setting colors in config phase.
  */
 const provider = {
-    name: 'bsIconConfig',
-
     // Provider methods
     setDarkColor,
     setLightColor,
@@ -82,4 +80,4 @@ class BsIconService {
     }
 }
 
-export default provider;
+export default ['bsIconConfig', provider];

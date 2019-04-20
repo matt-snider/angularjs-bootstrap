@@ -22,8 +22,7 @@ export class AlertController {
 }
 
 
-export default {
-    name: 'bsAlert',
+export default ['bsAlert', {
     controller: AlertController,
     template: `
         <div class="alert" ng-class="$ctrl.alertTypeStyle" role="alert">
@@ -39,4 +38,4 @@ export default {
         dismissible: '<',
     },
     transclude: true,
-};
+}];

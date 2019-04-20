@@ -21,8 +21,7 @@ class controller {
 }
 
 
-export default {
-    name: 'inputDemo',
+export default ['inputDemo', {
     controller,
     template: `
         <h1 class="display-4"> Input </h1>
@@ -199,4 +198,4 @@ export default {
             </component-property>
         </component-reference>
     `,
-};
+}];

@@ -21,8 +21,8 @@ function injectStyles() {
 
 export default angular
     .module('bootstrap.icon', [core])
-    .component(Icon.name, Icon)
-    .provider(IconConfigProvider.name, IconConfigProvider)
+    .component(...Icon)
+    .provider(...IconConfigProvider)
     .config(configStyles)
     .run(injectStyles)
     .name;

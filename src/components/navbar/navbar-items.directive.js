@@ -38,4 +38,4 @@ function bsNavbarItems() {
     };
 }
 
-export default bsNavbarItems;
+export default ['bsNavbarItems', bsNavbarItems];

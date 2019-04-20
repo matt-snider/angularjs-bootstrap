@@ -30,4 +30,4 @@ function codeExample() {
     };
 }
 
-export default codeExample;
+export default ['codeExample', codeExample];

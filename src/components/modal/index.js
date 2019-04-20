@@ -7,6 +7,6 @@ import ModalService from './modal.service';
 export default angular
     .module('bootstrap.modal', [])
     .component(...Modal)
-    .component(ModalAction.name, ModalAction)
-    .service(ModalService.name, ModalService)
+    .component(...ModalAction)
+    .service(...ModalService)
     .name;

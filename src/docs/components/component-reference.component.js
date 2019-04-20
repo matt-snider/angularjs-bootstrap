@@ -1,5 +1,4 @@
-export default {
-    name: 'componentReference',
+export default ['componentReference', {
     template: `
         <h3> &lt;{{ ::$ctrl.name }}&gt; </h3>
         <table class="table">
@@ -19,4 +18,4 @@ export default {
         name: '@',
     },
     transclude: true,
-};
+}];

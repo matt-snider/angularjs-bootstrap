@@ -31,8 +31,7 @@ class controller {
 }
 
 
-export default {
-    name: 'alertDemo',
+export default ['alertDemo', {
     controller,
     template: `
         <h1 class="display-4"> Alerts </h1>
@@ -124,4 +123,4 @@ export default {
             </component-property>
         </component-reference>
     `,
-};
+}];

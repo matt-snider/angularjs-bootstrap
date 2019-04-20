@@ -231,4 +231,4 @@ class PromptBuilder extends ConfirmBuilder {
 }
 
 
-export default bsModalService;
+export default ['bsModalService', bsModalService];

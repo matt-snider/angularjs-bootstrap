@@ -27,8 +27,7 @@ class controller {
     }
 }
 
-export default {
-    name: 'modalDemo',
+export default ['modalDemo', {
     controller,
     template: `
         <h1 class="display-4">Modal</h1>
@@ -113,4 +112,4 @@ bsModalService
             Show prompt
         </button>
     `,
-};
+}];

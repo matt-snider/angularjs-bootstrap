@@ -8,8 +8,7 @@ class controller {
 }
 
 
-export default {
-    name: 'badgeDemo',
+export default ['badgeDemo', {
     controller,
     template: `
         <h1 class="display-4"> Badge </h1>
@@ -121,4 +120,4 @@ export default {
             </component-property>
         </component-reference>
     `,
-};
+}];

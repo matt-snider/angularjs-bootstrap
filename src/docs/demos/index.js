@@ -15,13 +15,13 @@ import NavbarDemo from './navbar-demo.component';
 // prettier-ignore
 export default angular
     .module('bootstrap-docs.demos', [components])
-    .component(AlertDemo.name, AlertDemo)
-    .component(BadgeDemo.name, BadgeDemo)
+    .component(...AlertDemo)
+    .component(...BadgeDemo)
     .component(...CardDemo)
-    .component(CarouselDemo.name, CarouselDemo)
-    .component(DropdownDemo.name, DropdownDemo)
-    .component(IconDemo.name, IconDemo)
-    .component(InputDemo.name, InputDemo)
-    .component(ModalDemo.name, ModalDemo)
-    .component(NavbarDemo.name, NavbarDemo)
+    .component(...CarouselDemo)
+    .component(...DropdownDemo)
+    .component(...IconDemo)
+    .component(...InputDemo)
+    .component(...ModalDemo)
+    .component(...NavbarDemo)
     .name;

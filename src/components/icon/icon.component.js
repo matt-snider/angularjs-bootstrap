@@ -28,9 +28,7 @@ const PROPS = [
     'aria-label',
 ];
 
-export default {
-    name: 'bsIcon',
-
+export default ['bsIcon', {
     template($attrs) {
         'ngInject';
 
@@ -52,4 +50,4 @@ export default {
         }
         return octicons[$attrs.symbol].toSVG(config);
     },
-};
+}];

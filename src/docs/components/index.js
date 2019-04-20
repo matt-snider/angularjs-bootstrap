@@ -9,8 +9,8 @@ import componentProperty from './component-property.directive';
 
 export default angular
     .module('bootstrap-docs.components', [])
-    .component(ComponentReference.name, ComponentReference)
-    .component(GettingStarted.name, GettingStarted)
-    .directive(codeExample.name, codeExample)
-    .directive(componentProperty.name, componentProperty)
+    .component(...ComponentReference)
+    .component(...GettingStarted)
+    .directive(...codeExample)
+    .directive(...componentProperty)
     .name;

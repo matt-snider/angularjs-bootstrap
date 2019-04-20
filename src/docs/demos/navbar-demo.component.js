@@ -1,8 +1,7 @@
 import './navbar-demo.component.css';
 
 
-export default {
-    name: 'navbarDemo',
+export default ['navbarDemo', {
     template: `
         <h1 class="display-4"> Navbar </h1>
         <p class="lead">
@@ -229,4 +228,4 @@ export default {
             </bs-navbar>
         </code-example>
     `,
-};
+}];

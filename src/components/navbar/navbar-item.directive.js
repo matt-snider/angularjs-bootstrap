@@ -41,4 +41,4 @@ function bsNavbarItem($compile) {
     };
 }
 
-export default bsNavbarItem;
+export default ['bsNavbarItem', bsNavbarItem];

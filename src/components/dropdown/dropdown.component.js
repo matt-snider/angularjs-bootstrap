@@ -64,8 +64,7 @@ class controller {
     }
 }
 
-export default {
-    name: 'bsDropdown',
+export default ['bsDropdown', {
     controller,
     require: {
         bsNavbar: '^?',
@@ -97,4 +96,4 @@ export default {
         label: '?bsLabel',
         items: '?bsDropdownItems',
     }
-};
+}];

@@ -18,7 +18,7 @@ export default angular
         ngAnimate,
         core,
     ])
-    .component(Carousel.name, Carousel)
-    .directive(carouselItem.name, carouselItem)
-    .directive(carouselCaption.name, carouselCaption)
+    .component(...Carousel)
+    .directive(...carouselItem)
+    .directive(...carouselCaption)
     .name;

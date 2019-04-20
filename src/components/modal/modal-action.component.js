@@ -12,8 +12,7 @@ class controller {
     }
 }
 
-export default {
-    name: 'bsModalAction',
+export default ['bsModalAction', {
     controller,
     template: `
         <button type="button" class="btn" ng-class="$ctrl.btnTypeStyle"
@@ -24,4 +23,4 @@ export default {
     bindings: {
         type: '@',
     },
-};
+}];

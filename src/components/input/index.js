@@ -12,5 +12,5 @@ export default angular
         core,
     ])
     .component(...Input)
-    .directive(Errors.name, Errors)
+    .directive(...Errors)
     .name;

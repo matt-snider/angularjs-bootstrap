@@ -1,4 +1,4 @@
-function bsCarouselItem() {
+function directive() {
     return {
         restrict: 'E',
         require: '^bsCarousel',
@@ -11,4 +11,4 @@ function bsCarouselItem() {
     };
 }
 
-export default bsCarouselItem;
+export default ['bsCarouselItem', directive];

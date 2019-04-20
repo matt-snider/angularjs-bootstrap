@@ -17,8 +17,7 @@ class controller {
     }
 }
 
-export default {
-    name: 'carouselDemo',
+export default ['carouselDemo', {
     controller,
     template: `
         <h1 class="display-4"> Carousel </h1>
@@ -238,4 +237,4 @@ export default {
             </bs-carousel>
         </code-example>
     `,
-};
+}];

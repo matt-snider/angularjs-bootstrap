@@ -1,5 +1,4 @@
-export default {
-    name: 'iconDemo',
+export default ['iconDemo', {
     template: `
         <h1 class="display-4"> Icons </h1>
         <p class="lead">
@@ -68,4 +67,4 @@ export default {
             </component-property>
         </component-reference>
     `,
-};
+}];

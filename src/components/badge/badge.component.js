@@ -12,8 +12,7 @@ export class BadgeController {
 }
 
 
-export default {
-    name: 'bsBadge',
+export default ['bsBadge', {
     controller: BadgeController,
     template: `
         <span ng-if="!$ctrl.href"
@@ -34,4 +33,4 @@ export default {
         pill: '<',
         href: '@',
     }
-};
+}];

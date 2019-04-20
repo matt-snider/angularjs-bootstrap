@@ -20,7 +20,8 @@ let dropdownItems = createReplaceDirective('bsDropdownItems');
 
 export default angular
     .module('bootstrap.dropdown', [core])
-    .component(Dropdown.name, Dropdown)
-    .directive(dropdownItem.name, dropdownItem)
-    .directive(dropdownDivider.name, dropdownDivider)
-    .directive(dropdownItems.name, dropdownItems).name;
+    .component(...Dropdown)
+    .directive(...dropdownItem)
+    .directive(...dropdownDivider)
+    .directive(...dropdownItems)
+    .name;

@@ -91,8 +91,7 @@ class controller {
     }
 }
 
-export default {
-    name: 'bsNavbar',
+export default ['bsNavbar', {
     controller,
     template($element, $attrs) {
         'ngInject';
@@ -127,4 +126,4 @@ export default {
         brand: '?bsBrand',
         items: '?bsNavbarItems',
     },
-};
+}];

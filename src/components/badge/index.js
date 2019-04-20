@@ -7,12 +7,13 @@ import {default as Badge, BadgeController} from './badge.component';
 
 let badgeModule =
     angular.module('bootstrap.badge', [core])
-        .component(Badge.name, Badge);
+        .component(...Badge);
 
 
 // Aliases for badges
 // Override alert with new name and update controller.
 // End up with <bs-badge-success>, <bs-badge-warning>, ... etc
+
 function makeBadge(type) {
     class controller extends BadgeController {
         constructor(bsContextualTypes) {
@@ -22,8 +23,8 @@ function makeBadge(type) {
     controller.prototype.type = type;
 
     let name = `bsBadge${type.charAt(0).toUpperCase() + type.slice(1)}`;
-    let bindings = Object.assign({}, Badge.bindings);
-    let component = Object.assign({}, Badge, { name, bindings, controller });
+    let bindings = Object.assign({}, Badge[1].bindings);
+    let component = Object.assign({}, Badge[1], { name, bindings, controller });
     delete bindings.type;
     return component;
 }
