@@ -14,3 +14,19 @@ Make sure `angularjs-bootstrap.js` (or `.min.js`) and `angularjs-bootstrap.main.
 ## Development
 * Install via `npm install`
 * Start docs in a webpack dev server with `npm start` (this is a good way to interactively build/change new components)
+
+
+## Publishing to Github Pages
+
+On the first checkout or docs deployment, ensure that a git worktree exists for the `gh-pages` branch:
+
+```sh
+$ git worktree add dist gh-pages
+```
+
+After that simply deploy via:
+
+```sh
+$ ./publish-docs.sh
+```
+
