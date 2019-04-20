@@ -37,6 +37,7 @@
 .forwards .carousel-item.ng-leave.ng-leave-active {
     transform: translateX(-100%);
 }
+
 /*!
  * Bootstrap v4.0.0-beta (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -8221,7 +8222,8 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important;
 }
-/*# sourceMappingURL=bootstrap.css.map */html {
+/*# sourceMappingURL=bootstrap.css.map */
+html {
   box-sizing: border-box;
   font-family: sans-serif;
   line-height: 1.15;
@@ -8550,7 +8552,8 @@ template {
 [hidden] {
   display: none !important;
 }
-/*# sourceMappingURL=bootstrap-reboot.css.map */@-ms-viewport {
+/*# sourceMappingURL=bootstrap-reboot.css.map */
+@-ms-viewport {
   width: device-width;
 }
 
@@ -9902,7 +9905,8 @@ html {
         align-self: stretch !important;
   }
 }
-/*# sourceMappingURL=bootstrap-grid.css.map *//**
+/*# sourceMappingURL=bootstrap-grid.css.map */
+/**
  * Hover styles
  *
  * Hovering changes opacity. When hovering over a link containing
@@ -9913,193 +9917,6 @@ a.nav-link:hover bs-icon svg,
 bs-icon:hover svg {
     fill-opacity: 0.8;
 }
-/*
- Solarized Color Schemes originally by Ethan Schoonover
- http://ethanschoonover.com/solarized
 
- Ported for PrismJS by Hector Matos
- Website: https://krakendev.io
- Twitter Handle: https://twitter.com/allonsykraken)
-*/
 
-/*
-SOLARIZED HEX
---------- -------
-base03    #002b36
-base02    #073642
-base01    #586e75
-base00    #657b83
-base0     #839496
-base1     #93a1a1
-base2     #eee8d5
-base3     #fdf6e3
-yellow    #b58900
-orange    #cb4b16
-red       #dc322f
-magenta   #d33682
-violet    #6c71c4
-blue      #268bd2
-cyan      #2aa198
-green     #859900
-*/
-
-code[class*="language-"],
-pre[class*="language-"] {
-	color: #657b83; /* base00 */
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
-
-	line-height: 1.5;
-
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	tab-size: 4;
-
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
-
-pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-	background: #073642; /* base02 */
-}
-
-pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
-code[class*="language-"]::selection, code[class*="language-"] ::selection {
-	background: #073642; /* base02 */
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: .5em 0;
-	overflow: auto;
-	border-radius: 0.3em;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-	background-color: #fdf6e3; /* base3 */
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: .1em;
-	border-radius: .3em;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-	color: #93a1a1; /* base1 */
-}
-
-.token.punctuation {
-	color: #586e75; /* base01 */
-}
-
-.namespace {
-	opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.boolean,
-.token.number,
-.token.constant,
-.token.symbol,
-.token.deleted {
-	color: #268bd2; /* blue */
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.url,
-.token.inserted {
-	color: #2aa198; /* cyan */
-}
-
-.token.entity {
-	color: #657b83; /* base00 */
-	background: #eee8d5; /* base2 */
-}
-
-.token.atrule,
-.token.attr-value,
-.token.keyword {
-	color: #859900; /* green */
-}
-
-.token.function {
-	color: #b58900; /* yellow */
-}
-
-.token.regex,
-.token.important,
-.token.variable {
-	color: #cb4b16; /* orange */
-}
-
-.token.important,
-.token.bold {
-	font-weight: bold;
-}
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}code-example .example {
-    position: relative;
-    padding: 1.5rem;
-    margin: 1rem -15px;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    border: solid #f7f7f9;
-    border-width: .2rem;
-}
-
-code-example .example-code {
-    padding: 1rem;
-    margin: 1rem -15px;
-    margin-top: 0;
-    margin-right: 0;
-    margin-left: 0;
-    background-color: #f7f7f9;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-}
-
-code-example .example-code pre {
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    background-color: transparent;
-    border: 0;
-}
-.carousel-demo-slide-container {
-    height: 500px;
-    width: 100%;
-    background: grey;
-    text-align: center;
-}
-
-.carousel-demo-slide {
-    position: relative;
-    top: 40%;
-}
-code-example.navbar-example bs-navbar {
-    margin: 10px;
-}
-/*# sourceMappingURL=app.css.map*/
+/*# sourceMappingURL=angularjs-bootstrap.main.css.map*/
