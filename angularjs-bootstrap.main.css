@@ -548,7 +548,7 @@ mark,
 }
 
 .blockquote-footer::before {
-  content: "\2014   \A0";
+  content: "\2014 \00A0";
 }
 
 .img-fluid {
@@ -8222,7 +8222,6 @@ a.text-dark:focus, a.text-dark:hover {
 .invisible {
   visibility: hidden !important;
 }
-/*# sourceMappingURL=bootstrap.css.map */
 html {
   box-sizing: border-box;
   font-family: sans-serif;
@@ -8552,7 +8551,6 @@ template {
 [hidden] {
   display: none !important;
 }
-/*# sourceMappingURL=bootstrap-reboot.css.map */
 @-ms-viewport {
   width: device-width;
 }
@@ -9905,7 +9903,6 @@ html {
         align-self: stretch !important;
   }
 }
-/*# sourceMappingURL=bootstrap-grid.css.map */
 /**
  * Hover styles
  *
